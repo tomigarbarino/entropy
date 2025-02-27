@@ -3,7 +3,7 @@ import React from 'react';
 import "./homeMedia.scss"
 import { useState } from 'react';
 
-const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, mustBeVisible: forceVisible = false}) => {
+const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, forceVisible = false}) => {
   const [wasMouseHoverActivated, setMouseHoverActivated] = useState(false);
   const updateVisibleByMouseHover = () => {
     if (!wasMouseHoverActivated) {
