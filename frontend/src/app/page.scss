@@ -8,44 +8,83 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap: calc-size(15);
+    gap: calc-size(60);
 
     .row{
         display: flex;
         justify-content: space-between;
     }
 
+    .homeMedia{
+        position: relative;
+    }
+
     .homeMedia.mediaNumber-1{
         width:  calc-size(350);
         height: calc-size(256);
+        img{
+            position: absolute;
+            bottom: calc-size(-120);
+        }
     }
     .homeMedia.mediaNumber-2{
         width: calc-size(610);
         height: calc-size(330);
+        img{
+            position: absolute;
+            right: calc-size(-10);
+        }
     }
     .homeMedia.mediaNumber-3{
-        width: calc-size(400);
+        width: calc-size(403);
         height: calc-size(266);
+        img{
+            position: absolute;
+            bottom: calc-size(-30);
+        }
     }
     .homeMedia.mediaNumber-4{
-        width: calc-size(186);
-        height: calc-size(186);
+        width: calc-size(187);
+        height: calc-size(187);
+        img{
+            position: absolute;
+            bottom: calc-size(-200);
+        }
     }
     .homeMedia.mediaNumber-5{
         width: calc-size(377);
         height: calc-size(212);
+        img{
+            position: absolute;
+            bottom: calc-size(-80);
+            right: calc-size(-150);
+        }
     }
     .homeMedia.mediaNumber-6{
         width: calc-size(300);
         height: calc-size(404);
+        img{
+            position: absolute;
+            right: calc-size(-95);
+        }
+        
     }
     .homeMedia.mediaNumber-7{
-        width: calc-size(350);
+        width: calc-size(353);
         height: calc-size(330);
+        img{
+            position: absolute;
+            right: calc-size(-40);
+            bottom: calc-size(-35);
+        }
     }
     .homeMedia.mediaNumber-8{
-        width: calc-size(419);
+        width: calc-size(420);
         height: calc-size(211);
+        img{
+            bottom: calc-size(-100);
+            position: absolute;
+        }
     }
       
 }

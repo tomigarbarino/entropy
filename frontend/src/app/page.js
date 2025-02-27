@@ -12,7 +12,7 @@ export default function Home() {
   const timeOutValidationActivated = true;
   const timeToForceAllMediaVisible = 20000;
   const isMobile = useIsMobile();
-  const [forceVisible, setForceVisible] = useState(false);
+  const [forceVisible, setForceVisible] = useState(true);
 
   useEffect(()=> {
     setTimeout(()=> {
