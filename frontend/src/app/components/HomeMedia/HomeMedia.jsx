@@ -2,7 +2,7 @@ import Image from 'next/image'
 import React from 'react';
 import "./homeMedia.scss"
 
-const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false}) => {
+const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false, name}) => {
   return (
     <div className={`homeMedia mediaNumber-${mediaNumber}`}>
         {
