@@ -3,9 +3,9 @@
 import Image from "next/image";
 import styles from "./page.scss";
 import { useState, useEffect } from "react";
-import Navbar from "./components/Navbar/Navbar";
-import HomeMedia from "./components/HomeMedia/HomeMedia";
-import useIsMobile from "./hooks/isMobile";
+import Navbar from "../components/Navbar/Navbar";
+import HomeMedia from "../components/HomeMedia/HomeMedia";
+import useIsMobile from "../hooks/isMobile";
 
 
 export default function Home() {

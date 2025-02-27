@@ -10,6 +10,7 @@ const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, forc
       setMouseHoverActivated(true);
     }
   }
+
   return (
     <div className={`homeMedia mediaNumber-${mediaNumber} ${(wasMouseHoverActivated || forceVisible) ? 'visible' : 'notVisible'}`} onMouseOver={updateVisibleByMouseHover} >
         {
