@@ -1,5 +1,6 @@
 import Image from 'next/image'
-import React from 'react'
+import React from 'react';
+import "./homeMedia.scss"
 
 const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false}) => {
   return (

@@ -1,4 +1,51 @@
+@use '../../src/styles/mixins' as *;
+
 .home{
     width: 100%;
-    height: 95%;
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+
+
+    display: flex;
+    flex-direction: column;
+
+
+    .row{
+        display: flex;
+        justify-content: space-between;
+    }
+
+    .homeMedia.mediaNumber-1{
+        width: 350px;
+        height: 256px;
+    }
+    .homeMedia.mediaNumber-2{
+        width: 610px;
+        height: 330px;
+    }
+    .homeMedia.mediaNumber-3{
+        width: 400px;
+        height: 266px;
+    }
+    .homeMedia.mediaNumber-4{
+        width: 186px;
+        height: 186px;
+    }
+    .homeMedia.mediaNumber-5{
+        width: 377px;
+        height: 212px;
+    }
+    .homeMedia.mediaNumber-6{
+        width: 300px;
+        height: 404px;
+    }
+    .homeMedia.mediaNumber-7{
+        width: 350px;
+        height: 330px;
+    }
+    .homeMedia.mediaNumber-8{
+        width: 419px;
+        height: 211px;
+    }
+      
 }
