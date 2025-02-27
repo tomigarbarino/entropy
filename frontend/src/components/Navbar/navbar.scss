@@ -11,8 +11,15 @@
 
     .logo {
         position: absolute;
+        top: -20px;
         left: 50%;
         transform: translateX(-50%);
+      }
+      img {
+        margin-top: auto;
+        width: 100%;
+        max-width: 300px; 
+        height: auto;
       }
     
 }

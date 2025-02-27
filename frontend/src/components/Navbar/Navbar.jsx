@@ -12,7 +12,7 @@ const Navbar = () => {
 					<p>contact@entroprypro.nyc</p>
         </div>
         <div className='logo'>
-            <span>Entropy (add logo)</span>
+          <img src="/images/ENTROPY_LOGO-12.png" alt="Entropy Logo" />
         </div>
         <div className='social'>
 					<p>1NSTAGRAM</p>

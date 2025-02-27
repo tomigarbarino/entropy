@@ -2,7 +2,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.scss";
 
 
-// Aca va la metadata. Tambien podes
 export const metadata = {
   title: "Entropy",
   description: "See our projects.",
@@ -11,8 +10,7 @@ export const metadata = {
     description: "Entropy",
     images: [
       {
-        // imagen que aparece cuando compartis la página
-        url: "/images/",
+        url: "/images/ENTROPY_LOGO-12.png ",
         width: 1280,
         height: 1280,
       },
