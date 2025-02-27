@@ -10,7 +10,12 @@ export default function Home() {
   const [a,b] = useState("sds")
   return (
     <>
+    <div className="globalContainer">
       <Navbar />
+      <div className="home">
+      
+      </div>
+    </div>
     </>
   );
 }
