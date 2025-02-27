@@ -1,0 +1,9 @@
+@function calc-size($px) {
+  $value: calc((100vw * $px) / 1920);
+  @return $value;
+}
+
+@function calc-size-mob($px) {
+  $value: calc((100vw * $px) / 390);
+  @return $value;
+}

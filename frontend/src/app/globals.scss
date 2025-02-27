@@ -1,4 +1,5 @@
 @use "../styles/components/fonts";
+@use "../styles/mixins" as *;
 
 *{
   box-sizing: border-box;
@@ -8,4 +9,8 @@
   -moz-osx-font-smoothing: grayscale;
   font-family: "Favoritmono", sans-serif;
   font-style: light;
+}
+
+body{
+  padding: calc-size(30);;
 }
