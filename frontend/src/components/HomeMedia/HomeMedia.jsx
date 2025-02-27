@@ -20,6 +20,7 @@ const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, forc
                 <Image src={mediaSrc} width={500} height={500} alt={mediaAlt ?? "image"} unoptimized={true} />
             )
         }
+        <span className='client'>{name}</span>
     </div>
   )
 }

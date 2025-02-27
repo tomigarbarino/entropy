@@ -1,3 +1,5 @@
+@use "../../styles/mixins" as *;
+
 .homeMedia{
    
      img,video{
@@ -7,11 +9,15 @@
      }
      cursor: pointer;
 
+     .client{
+      position: absolute;
+      font-size: calc-size(15);
+     }
+
      transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
      &:hover {
       img{
          transform: scale(1.05); 
-
       }
      }
    
