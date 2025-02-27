@@ -4,4 +4,15 @@
         height: 100%;
         object-fit: cover;
      }
+     cursor: pointer;
+
+     transition: opacity 0.3s ease-in-out; 
+
+     &.notVisible{
+      opacity: 0;
+     }
+
+     &.visible{
+      opacity: 1;
+     }
 }

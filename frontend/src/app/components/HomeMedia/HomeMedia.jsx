@@ -1,10 +1,17 @@
 import Image from 'next/image'
 import React from 'react';
 import "./homeMedia.scss"
+import { useState } from 'react';
 
 const HomeMedia = ({mediaSrc, mediaAlt, mediaNumber, isVideo = false, name}) => {
+  const [visible, setVisible] = useState(false);
+  const updateVisible = () => {
+    if (!visible) {
+      setVisible(true);
+    }
+  }
   return (
-    <div className={`homeMedia mediaNumber-${mediaNumber}`}>
+    <div className={`homeMedia mediaNumber-${mediaNumber} ${visible ? 'visible' : 'notVisible'}`} onMouseOver={updateVisible} >
         {
             isVideo ? (
                 <video src={mediaSrc} playsInline muted autoPlay loop></video>
