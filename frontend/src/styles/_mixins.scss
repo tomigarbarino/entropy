@@ -1,3 +1,6 @@
+$px: 1920;
+
+
 @function calc-size($px) {
   $value: calc((100vw * $px) / 1920);
   @return $value;

@@ -1,4 +1,4 @@
-// components/HomeMedia.jsx
+'use client';
 import Image from 'next/image';
 import React, { useState } from 'react';
 import "./homeMedia.scss";
