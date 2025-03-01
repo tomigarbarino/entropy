@@ -10,6 +10,11 @@
     justify-content: center;
     gap: calc-size(60);
 
+    @media (min-width: 769px) {
+        .home {
+          overflow-y: hidden;
+        }
+      }
       
 
     .row{

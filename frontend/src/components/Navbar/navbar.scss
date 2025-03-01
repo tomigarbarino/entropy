@@ -24,6 +24,19 @@
     &--hide {
         top: -9vh; 
       }
+
+
+      @media screen and (max-width: 768px) and (min-width: 600px) {
+        &--hide {
+            top: -14vh; 
+          }
+      }
+      @media screen and (max-width: 599px) and (min-width: 425px) {
+        &--hide {
+            top: -12vh; 
+          }
+        
+      }
     
       &--show {
         top: 0;

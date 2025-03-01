@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 
 export default function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
-  const breakpoint = 1100; // tablet we use it as mobile
+  const breakpoint = 768; 
 
   useEffect(() => {
     function checkMobile() {
