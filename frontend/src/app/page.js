@@ -7,6 +7,8 @@ import Navbar from "../components/Navbar/Navbar";
 import HomeMedia from "../components/HomeMedia/HomeMedia";
 import ProjectModal from "../components/ProjectModal/ProjectModal";
 import useIsMobile from "../hooks/isMobile";
+import HomeMediaGrid from "../components/HomeMediaGrid/HomeMediaGrid";
+import useHideOnScroll from '../hooks/useHideOnScroll'; 
 
 export default function Home() {
   const timeOutValidationActivated = true;
@@ -15,6 +17,8 @@ export default function Home() {
   const [forceVisible, setForceVisible] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
+   const showNav = useHideOnScroll(0);
+  
 
   useEffect(()=> {
     setTimeout(()=> {
@@ -58,10 +62,10 @@ export default function Home() {
       details: "Created in 20 days",
       mediaSrc: "/images/stella_home.png",
       media: [
-                {
-          src: "https://vimeo.com/landiaproductioncompany/review/1060869647/d805324c53",
-          type: "video"
-        },
+        //         {
+        //   src: "https://vimeo.com/landiaproductioncompany/review/1060869647/d805324c53",
+        //   type: "video"
+        // },
         { src: "/images/stella_home.png", type: "image" },
         { src: "/images/STELLA/T_001.jpg", type: "image" },
         { src: "/images/STELLA/T_002.jpg", type: "image" },
@@ -85,6 +89,7 @@ export default function Home() {
       roles: ["Deepfake", "Model Training", "Styleframe", "Direction & Post", "Animation"], 
       details: "4 minutes length",
       media: [
+        { src: "/images/santaolalla_home.png", type: "image" },
         { src: "/images/SANTAOLALLA/5e0180d3-ed93-4e93-b67e-43772efacc93.jpg", type: "image" },
         { src: "/images/SANTAOLALLA/add38a4b-8f4d-4de1-87f4-8d0eb3e64bf2.jpg", type: "image" },
         { src: "/images/SANTAOLALLA/b75189dc-5869-42e8-af37-e7899ee2b31a.jpg", type: "image" },
@@ -102,6 +107,7 @@ export default function Home() {
         "Beta-mode exploration of a software solution to create static and animated content on Tony the Tiger, based out of a combination of AI tools and platforms, and prompting techniques."
       ],
       media: [
+        { src: "/images/keller_home.jpg", type: "image" },
         { src: "/images/KELLANOVA/tono (1).jpg", type: "image" },
         { src: "/images/KELLANOVA/tono (2).jpg", type: "image" },
         { src: "/images/KELLANOVA/tono (3).jpg", type: "image" },
@@ -127,6 +133,7 @@ export default function Home() {
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/tmr_home.png",
       media: [
+        { src: "/images/tmr_home.png", type: "image" },
         { src: "/images/TMR/6dfb99d9-ec96-4613-b922-a0fc68284d28.jpg", type: "image" },
         { src: "/images/TMR/953017bd-37b9-40a8-a51b-cf0df115fd2e.jpg", type: "image" },
         { src: "/images/TMR/a36a6744-b089-4c8d-923a-3dc7ff2e7a8e.jpg", type: "image" },
@@ -140,23 +147,48 @@ export default function Home() {
       ]
     },
     {
-      name: "Bayer",
+      name: "Pandaf00d",
       mediaNumber: 7,
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/bayer_home.png",
       media: [
         { src: "/images/bayer_home.png", type: "image" },
-        { src: "/videos/bayer_ad.mp4", type: "video" }
+        { src: "/images/BAYER/1.jpg", type: "image" },
+        { src: "/images/BAYER/2.jpg", type: "image" },
+        { src: "/images/BAYER/3.jpg", type: "image" },
+        { src: "/images/BAYER/4.jpg", type: "image" },
+        { src: "/images/BAYER/5.jpg", type: "image" },
+        { src: "/images/BAYER/6.jpg", type: "image" },
+        { src: "/images/BAYER/7.jpg", type: "image" },
+        { src: "/images/BAYER/8.jpg", type: "image" },
+        { src: "/images/BAYER/00034-20241202133700_[flux1-dev-bnb-nf4-v2]_1479102335.jpg", type: "image" },
+        { src: "/images/BAYER/00589-20241209180756_[flux1-dev-bnb-nf4-v2]_38241114231.jpg", type: "image" },
+        { src: "/images/BAYER/00595-20241209181943_[flux1-dev-bnb-nf4-v2]_4229721579.jpg", type: "image" },
+        { src: "/images/BAYER/background.jpg", type: "image" },
+        { src: "/images/BAYER/consultorio (4).jpg", type: "image" },
+        
       ]
     },
     {
-      name: "Pandaf00d",
+      name: "Bayer",
       mediaNumber: 8,
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/panda_home.png",
       media: [
         { src: "/images/panda_home.png", type: "image" },
-        { src: "/videos/panda_food_promo.mp4", type: "video" }
+        { src: "/images/BAYER/1.jpg", type: "image" },
+        { src: "/images/BAYER/2.jpg", type: "image" },
+        { src: "/images/BAYER/3.jpg", type: "image" },
+        { src: "/images/BAYER/4.jpg", type: "image" },
+        { src: "/images/BAYER/5.jpg", type: "image" },
+        { src: "/images/BAYER/6.jpg", type: "image" },
+        { src: "/images/BAYER/7.jpg", type: "image" },
+        { src: "/images/BAYER/8.jpg", type: "image" },
+        { src: "/images/BAYER/00034-20241202133700_[flux1-dev-bnb-nf4-v2]_1479102335.jpg", type: "image" },
+        { src: "/images/BAYER/00589-20241209180756_[flux1-dev-bnb-nf4-v2]_38241114231.jpg", type: "image" },
+        { src: "/images/BAYER/00595-20241209181943_[flux1-dev-bnb-nf4-v2]_4229721579.jpg", type: "image" },
+        { src: "/images/BAYER/background.jpg", type: "image" },
+        { src: "/images/BAYER/consultorio (4).jpg", type: "image" },
       ]
     }
   ];
@@ -175,7 +207,10 @@ export default function Home() {
   return (
     <>
       <div className="globalContainer">
-        <Navbar />
+        <Navbar showNav={showNav} />
+        {isMobile ? (
+          <HomeMediaGrid projects={projects} onProjectClick={handleCardClick} /> ):
+          (
         <div className="home">
           <div className="row row1">
             {projects.slice(0, 4).map(project => (
@@ -183,7 +218,7 @@ export default function Home() {
                 key={project.mediaNumber}
                 {...project}
                 onClick={() => handleCardClick(project)}
-                forceVisible={forceMediaToVisible}
+                forceVisible={false}
               />
             ))}
           </div>
@@ -193,11 +228,12 @@ export default function Home() {
                 key={project.mediaNumber}
                 {...project}
                 onClick={() => handleCardClick(project)}
-                forceVisible={forceMediaToVisible}
+                forceVisible={false}
               />
             ))}
           </div>
         </div>
+  )} 
         <ProjectModal 
   isOpen={modalOpen} 
   onClose={closeModal} 

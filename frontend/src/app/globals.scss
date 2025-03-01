@@ -13,9 +13,8 @@
 
 .globalContainer{
   padding: calc-size(30);
-  height: 100vh;
+  padding-top: 0;
   width: 100%;
-  overflow: hidden;
   display: flex;
   flex-direction: column;
 }

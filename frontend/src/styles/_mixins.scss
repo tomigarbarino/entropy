@@ -1,27 +1,9 @@
-$px: 1920;
+$base-width: 1920;
 
-
-@function calc-size($px) {
-  $value: calc((100vw * $px) / 1920);
-  @return $value;
+@function calc-size($size) {
+  @return unquote("calc(min((100vw * #{$size}) / #{$base-width}, #{$size}px))");
 }
 
-@function calc-size-mob($px) {
-  $value: calc((100vw * $px) / 390);
-  @return $value;
+@function calc-size-mob($size) {
+  @return unquote("calc(min((100vw * #{$size}) / 390, #{$size}px))");
 }
-
-
-/* Idea
-Funcion pero que no crece más. Elegis el tamaño maximo y solo decrece en viewports más chicos. Se podria usar con un wrapper y la pagina tiene un max width.
-@function calc-size($px) {
-  $value: calc(min((100vw * $px) / 1920, #{$px}));
-  @return $value;
-}
-
-@function calc-size-mob($px) {
-  $value: calc(min((100vw * $px) / 390, #{$px}));
-  @return $value;
-}
-
-*/

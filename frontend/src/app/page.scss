@@ -3,7 +3,7 @@
 .home{
     width: 100%;
     height: 100%;
-    padding-top: calc-size(80);
+    padding-top: calc-size(40);
     padding-bottom: calc-size(122);
     display: flex;
     flex-direction: column;
@@ -17,13 +17,43 @@
         justify-content: space-between;
     }
 
+    @media (max-width: 768px) {
+        .row {
+            display: flex;
+            flex-direction: column; 
+            align-items: center;
+            gap: calc-size(20);
+        }
+
+        .home{
+         
+
+            
+
+        }
+        @media (max-width: 768px) {
+            .home {
+              height: auto !important;
+              overflow: visible !important;
+            }
+          }
+
+        .homeMediaGrid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 10px;
+            padding: 10px;
+            overflow-y: auto;
+          }
+    }
+
     .homeMedia{
         position: relative;
     }
 
     .homeMedia.mediaNumber-1{
         width:  calc-size(350);
-        height: calc-size(256);
+        height: calc-size(250);
         img{
             position: absolute;
             bottom: calc-size(-120);
@@ -35,7 +65,7 @@
     }
     .homeMedia.mediaNumber-2{
         width: calc-size(610);
-        height: calc-size(330);
+        height: calc-size(300);
         img{
             position: absolute;
             right: calc-size(-10);
@@ -47,7 +77,7 @@
     }
     .homeMedia.mediaNumber-3{
         width: calc-size(403);
-        height: calc-size(266);
+        height: calc-size(260);
         img{
             position: absolute;
             bottom: calc-size(-30);
@@ -71,7 +101,7 @@
     }
     .homeMedia.mediaNumber-5{
         width: calc-size(377);
-        height: calc-size(212);
+        height: calc-size(210);
         img{
             position: absolute;
             bottom: calc-size(-80);
@@ -84,7 +114,7 @@
     }
     .homeMedia.mediaNumber-6{
         width: calc-size(300);
-        height: calc-size(404);
+        height: calc-size(380);
         img{
             position: absolute;
             right: calc-size(-95);

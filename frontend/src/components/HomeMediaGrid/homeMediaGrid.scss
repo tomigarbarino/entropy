@@ -1,0 +1,35 @@
+.homeMediaGrid {
+  display: grid;
+  grid-template-columns: 1fr; 
+  gap: 50px;
+  padding: 10px;
+  margin-top: 12rem;
+  
+}
+
+.gridItem {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+
+.gridItem img,
+.gridItem video {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.client {
+  margin-top: 5px;
+  font-size: 1rem;
+  color: #333;
+  text-align: center;
+}
