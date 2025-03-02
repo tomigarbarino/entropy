@@ -5,7 +5,7 @@
     display: grid;
     grid-template-columns: 1fr auto 1fr;
     align-items: center;
-    font-size: calc-size(23);
+    font-size: calc-size(18);
     line-height: calc-size(23);
     width: 100%;
     
@@ -13,7 +13,7 @@
         display: grid;
         grid-template-columns: 1fr auto 1fr;
         align-items: center;
-        font-size: calc-size(23);
+        font-size: calc-size(18);
         line-height: calc-size(23);
     }
 
@@ -61,15 +61,31 @@
         height: auto;
     }
 
-    .social--desktop {
-        text-align: right;
+    @media screen and (max-width: 767px) {
+        .logo img {
+            max-width: 100%;
+        }
     }
+    
+    .social--desktop {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-end;
+      }
+      
+      .social--desktop p {
+        display: inline-block;
+        background-color: #FFDDE6;
+        margin: 4px 0; 
+        padding: 4px;
+      }
 
     @media screen and (max-width: 768px) {
         display: flex;
         flex-direction: column;
         align-items: center;
         position: fixed;
+        z-index: 10000;
         transition: top 0.4s cubic-bezier(0.4, 0, 0.2, 1);
         padding: 20px;
     
@@ -105,8 +121,14 @@
     
         .social {
           align-items: flex-end;
+          
+          p {
+            display: inline-block;
+            background-color: #FFDDE6;
+            margin: 4px 0;
+            padding: 4px;
+          }
         }
-    
         .contact p, .social p {
           margin: 4px 0;
           font-size: 14px;

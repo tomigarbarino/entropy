@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from "react";
 import "./projectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
+import Button from "../Button/Button";
 
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;
@@ -9,6 +10,15 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [cursorType, setCursorType] = useState("");
   const [animClass, setAnimClass] = useState("");
+  const [isTextVisible, setIsTextVisible] = useState(showTexts);
+
+  const hasText =
+    (project.howWeDidIt &&
+      (Array.isArray(project.howWeDidIt)
+        ? project.howWeDidIt.length > 0
+        : true)) ||
+    (project.roles && project.roles.length > 0) ||
+    project.details;
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -78,33 +88,47 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
         onClick={(e) => e.stopPropagation()}
         onMouseMove={handleMouseMove}
       >
-        {showTexts && (
+        {hasText && (
           <div className="textContainer">
-            {project.howWeDidIt && (
-              <div className="projectSection">
-                <h3>How We Did It</h3>
-                {renderHowWeDidIt()}
-              </div>
+            {isTextVisible && (
+              <>
+                {project.howWeDidIt && (
+                  <div className="projectSection">
+                    <h3>H0W WE D1D 1T</h3>
+                    {renderHowWeDidIt()}
+                  </div>
+                )}
+                {project.roles && project.roles.length > 0 && (
+                  <div className="projectSection">
+                    <h3>R0LES</h3>
+                    {project.roles.map((role, index) => (
+                      <p key={index}>{role}</p>
+                    ))}
+                  </div>
+                )}
+                {project.details && (
+                  <div className="projectSection">
+                    <h3>DETA1LS</h3>
+                    <p>{project.details}</p>
+                  </div>
+                )}
+              </>
             )}
-            {project.roles && project.roles.length > 0 && (
-              <div className="projectSection">
-                <h3>Roles</h3>
-                {project.roles.map((role, index) => (
-                  <p key={index}>{role}</p>
-                ))}
-              </div>
-            )}
-            {project.details && (
-              <div className="projectSection">
-                <h3>Details</h3>
-                <p>{project.details}</p>
-              </div>
-            )}
+            <Button
+              text={isTextVisible ? "H1DE TEXT" : "Sh0w Text"}
+              onClick={() => setIsTextVisible(!isTextVisible)}
+            />
           </div>
         )}
+
         <div className="modalContent">
+          <div className="closeButton" onClick={onClose}>
+            &times;
+          </div>
           <div
-            className="mediaContainer"
+            className={`mediaContainer ${
+              project.media[currentIndex].type === "video" ? "video" : ""
+            }`}
             onClick={() =>
               cursorType === "next" ? triggerNext() : triggerPrev()
             }
@@ -130,6 +154,8 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
               />
             )}
           </div>
+
+          <div className="projectName">{project.name}</div>
         </div>
       </div>
     </div>

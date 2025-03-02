@@ -44,11 +44,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                   />
                 )
               ) : (
-                <img
-                  src={mainMedia.src}
-                  alt={project.name}
-                  className="media"
-                />
+                <img src={mainMedia.src} alt={project.name} className="media" />
               )}
             </div>
           )}
@@ -56,7 +52,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             <div className="textContainer">
               {project.howWeDidIt && (
                 <div className="projectSection">
-                  <h3>How We Did It</h3>
+                  <h3>HH0W WE D1D 1T</h3>
                   {Array.isArray(project.howWeDidIt)
                     ? project.howWeDidIt.map((paragraph, idx) => (
                         <p key={idx}>{paragraph}</p>
@@ -67,7 +63,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
 
               {project.roles && project.roles.length > 0 && (
                 <div className="projectSection">
-                  <h3>Roles</h3>
+                  <h3>R0LES</h3>
                   {project.roles.map((role, idx) => (
                     <p key={idx}>{role}</p>
                   ))}
@@ -76,7 +72,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
 
               {project.details && (
                 <div className="projectSection">
-                  <h3>Details</h3>
+                  <h3>DETA1LS</h3>
                   <p>{project.details}</p>
                 </div>
               )}
@@ -93,7 +89,6 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                       <video
                         src={mediaItem.src}
                         controls
-                        autoPlay
                         className="media"
                       />
                     )

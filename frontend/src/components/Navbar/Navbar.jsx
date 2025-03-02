@@ -15,7 +15,7 @@ const Navbar = ({showNav}) => {
           <img src="/images/ENTROPY_LOGO-12.png" alt="Entropy Logo" />
         </div>
         <div className="social--desktop">
-            <p>INSTAGRAM</p>
+            <p>1NSTAGRAM</p>
             <p>@entropy.ai</p>
         </div>
 

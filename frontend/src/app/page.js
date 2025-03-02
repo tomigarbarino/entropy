@@ -35,6 +35,9 @@ export default function Home() {
       name: "Uber",
       mediaNumber: 1,
       forceVisible: forceMediaToVisible,
+      howWeDidIt:"1n c0llab0rat10n w1th AKQA agency, Uber c0mm1ss10ned us t0 create three real1st1c an1mat1cs f0r test1ng the c0mmerc1al c0ncept w1th the aud1ence. We met1cul0usly crafted these an1mat1cs t0 ensure they effect1vely c0nveyed the 1ntended message and res0nated w1th the target dem0graph1c, pr0v1d1ng valuable 1ns1ghts f0r the f1nal c0mmerc1al pr0duct10n.", 
+      roles: ["Gen Cast1ng", "St0ryb0ard", "Styleframes", "M0t10n", "Ed1t + SFX", "Del1very"],
+      details: "3 an1mat1cs",
       mediaSrc:
         "/videos/uber_home.gif",
       media: [
@@ -44,14 +47,13 @@ export default function Home() {
       ]
     },
     {
-      name: "Budweiser",
+      name: "Budwe1ser",
       mediaNumber: 2,
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/budweiser_home.png",
       media: [
         { src: "https://player.vimeo.com/video/1060869323?h=c77a01b2b7&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
         { src: "/images/budweiser_home.png", type: "image" },
-        { src: "/images/budweiser_2.png", type: "image" }
       ]
     },
     {
@@ -59,9 +61,9 @@ export default function Home() {
       mediaNumber: 3,
       forceVisible: forceMediaToVisible,
       howWeDidIt:
-        "In collaboration with GUT agency, Stella Artois embarked on an innovative project where we trained a model using the works of the renowned painter Pieter Bruegel the Elder to create various scenarios of witches brewing beer. We then used hybrid techniques to animate these scenes, bringing Bruegel's artistic style to life in a unique and captivating manner.",
-      roles: ["Storyboard", "Model Training", "Styleframes", "Animation", "Delivery"],
-      details: "Created in 20 days",
+        "1n c0llab0rat10n w1th GUT agency, Stella Art01s embarked 0n an 1nn0vat1ve pr0ject where we tra1ned a m0del us1ng the w0rks 0f the ren0wned pa1nter P1eter Bruegel the Elder t0 create var10us scenar10s 0f w1tches brew1ng beer. We then used hybr1d techn1ques t0 an1mate these scenes, br1ng1ng Bruegel's art1st1c style t0 l1fe 1n a un1que and capt1vat1ng manner.",
+      roles: ["St0ryb0ard", "M0del Tra1n1ng", "Styleframes", "An1mat10n", "Del1very"],
+      details: "Created 1n 20 days",
       mediaSrc: "/images/stella_home.png",
       media: [
         { src: "https://player.vimeo.com/video/1060869647?h=e9f2b9abfa&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
@@ -79,14 +81,14 @@ export default function Home() {
       ]
     },
     {
-      name: "Santaolalla",
+      name: "Santa0lalla",
       mediaNumber: 4,
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/santaolalla_home.png",
       howWeDidIt:
-        "For Gustavo Santaolalla, we produced a music video for Bajofondo featuring Lali Esposito. This project involved crafting a visually stunning narrative that blended both real and virtual worlds, showcasing Lali's dual life as a pop singer in a dystopian setting. Our approach included advanced 3D modeling, VFX, and AI tools like Runway ML, combined with live footage and vintage clips to create a unique and immersive visual experience.",
-      roles: ["Deepfake", "Model Training", "Styleframe", "Direction & Post", "Animation"],
-      details: "4 minutes length",
+        "F0r Gustav0 Santa0lalla, we pr0duced a mus1c v1de0 f0r Baj0f0nd0 featur1ng Lal1 Esp0s1t0. Th1s pr0ject 1nv0lved craft1ng a v1sually stunn1ng narrat1ve that blended b0th real and v1rtual w0rlds, sh0wcas1ng Lal1's dual l1fe as a p0p s1nger 1n a dyst0p1an sett1ng. 0ur appr0ach 1ncluded advanced 3D m0del1ng, VFX, and A1 t00ls l1ke Runway ML, c0mb1ned w1th l1ve f00tage and v1ntage cl1ps t0 create a un1que and 1mmers1ve v1sual exper1ence.",
+      roles: ["Deepfake", "M0del Tra1n1ng", "Styleframe", "D1rect10n & P0st", "An1mat10n"],
+      details: "4 m1nutes length",
       media: [
         { src: "/images/santaolalla_home.png", type: "image" },
         { src: "/images/SANTAOLALLA/5e0180d3-ed93-4e93-b67e-43772efacc93.jpg", type: "image" },
@@ -97,7 +99,7 @@ export default function Home() {
       ]
     },
     {
-      name: "Kellanova",
+      name: "Kellan0va",
       mediaNumber: 5,
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/keller_home.jpg",
@@ -156,29 +158,14 @@ export default function Home() {
       media: [
         { src: "https://player.vimeo.com/video/1060869610?h=c5c47ee7a5&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
         { src: "https://player.vimeo.com/video/1060869578?h=68fadce320&badge=0&autopause=0", type: "video" },
-        { src: "/images/bayer_home.png", type: "image" },
-        { src: "/images/BAYER/1.jpg", type: "image" },
-        { src: "/images/BAYER/2.jpg", type: "image" },
-        { src: "/images/BAYER/3.jpg", type: "image" },
-        { src: "/images/BAYER/4.jpg", type: "image" },
-        { src: "/images/BAYER/5.jpg", type: "image" },
-        { src: "/images/BAYER/6.jpg", type: "image" },
-        { src: "/images/BAYER/7.jpg", type: "image" },
-        { src: "/images/BAYER/8.jpg", type: "image" },
-        { src: "/images/BAYER/00034-20241202133700_[flux1-dev-bnb-nf4-v2]_1479102335.jpg", type: "image" },
-        { src: "/images/BAYER/00589-20241209180756_[flux1-dev-bnb-nf4-v2]_38241114231.jpg", type: "image" },
-        { src: "/images/BAYER/00595-20241209181943_[flux1-dev-bnb-nf4-v2]_4229721579.jpg", type: "image" },
-        { src: "/images/BAYER/background.jpg", type: "image" },
-        { src: "/images/BAYER/consultorio (4).jpg", type: "image" }
       ]
     },
     {
       name: "Bayer",
       mediaNumber: 8,
       forceVisible: forceMediaToVisible,
-      mediaSrc: "/images/panda_home.png",
+      mediaSrc: "/images/BAYER/1.jpg",
       media: [
-        { src: "/images/panda_home.png", type: "image" },
         { src: "/images/BAYER/1.jpg", type: "image" },
         { src: "/images/BAYER/2.jpg", type: "image" },
         { src: "/images/BAYER/3.jpg", type: "image" },
@@ -211,6 +198,7 @@ export default function Home() {
     <>
       <div className="globalContainer">
         <Navbar showNav={showNav} />
+        <div className="navbar-spacer" />
         {isMobile ? (
           <HomeMediaGrid projects={projects} onProjectClick={handleCardClick} />
         ) : (
