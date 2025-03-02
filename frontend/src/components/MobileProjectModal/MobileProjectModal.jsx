@@ -4,6 +4,12 @@ import "./MobileProjectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
 
+const getPosterFromProject = (project) => {
+  if (!project || !project.media) return null;
+  const imageMedia = project.media.find((mediaItem) => mediaItem.type === "image");
+  return imageMedia ? imageMedia.src : null;
+};
+
 const useMobileProjectData = (project) => {
   if (!project) return { mainMedia: null, restMedia: [] };
   const mainMedia = project.media?.[0] || null;
@@ -15,6 +21,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
   if (!isOpen || !project) return null;
 
   const { mainMedia, restMedia } = useMobileProjectData(project);
+  const projectPoster = getPosterFromProject(project);
 
   useEffect(() => {
     const handleKeyDown = (e) => {
@@ -27,19 +34,23 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
   const handleModalClick = (e) => e.stopPropagation();
 
   return (
-    <div className="mobileModalBackdrop" onClick={onClose} >
+    <div className="mobileModalBackdrop" onClick={onClose}>
       <div className="mobileModalContainer" onClick={handleModalClick}>
         <div className="mobileModalContent" ref={scrollRef}>
           {mainMedia && (
             <div className="mainMedia">
               {mainMedia.type === "video" ? (
                 mainMedia.src.includes("vimeo.com") ? (
-                  <VimeoEmbed videoUrl={mainMedia.src} />
+                  <VimeoEmbed
+                    videoUrl={mainMedia.src}
+                    poster={projectPoster}
+                  />
                 ) : (
                   <video
                     src={mainMedia.src}
                     controls
                     autoPlay
+                    poster={projectPoster}
                     className="media"
                   />
                 )
@@ -84,11 +95,15 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
                 <div key={idx} className="mediaItem">
                   {mediaItem.type === "video" ? (
                     mediaItem.src.includes("vimeo.com") ? (
-                      <VimeoEmbed videoUrl={mediaItem.src} />
+                      <VimeoEmbed
+                        videoUrl={mediaItem.src}
+                        poster={projectPoster}
+                      />
                     ) : (
                       <video
                         src={mediaItem.src}
                         controls
+                        poster={projectPoster}
                         className="media"
                       />
                     )

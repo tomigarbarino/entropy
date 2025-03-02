@@ -4,6 +4,12 @@ import "./projectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
 
+const getPosterFromProject = (project) => {
+  if (!project || !project.media) return null;
+  const imageMedia = project.media.find((mediaItem) => mediaItem.type === "image");
+  return imageMedia ? imageMedia.src : null;
+};
+
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;
 
@@ -81,6 +87,9 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
     ));
   };
 
+
+  const projectPoster = getPosterFromProject(project);
+
   return (
     <div className="modalBackdrop" onClick={onClose}>
       <div
@@ -135,13 +144,17 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
           >
             {project.media[currentIndex].type === "video" ? (
               project.media[currentIndex].src.includes("vimeo.com") ? (
-                <VimeoEmbed videoUrl={project.media[currentIndex].src} />
+                <VimeoEmbed
+                  videoUrl={project.media[currentIndex].src}
+                  poster={projectPoster}
+                />
               ) : (
                 <video
                   key={project.media[currentIndex].src}
                   src={project.media[currentIndex].src}
                   controls
                   autoPlay
+                  poster={projectPoster}
                   className={`media ${animClass}`}
                 />
               )

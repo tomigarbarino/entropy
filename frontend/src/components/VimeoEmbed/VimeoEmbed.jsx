@@ -1,7 +1,9 @@
 'use client';
-import React from "react";
+import React, { useState } from "react";
 
-function VimeoEmbed({ videoUrl }) {
+function VimeoEmbed({ videoUrl, poster }) {
+  const [loaded, setLoaded] = useState(false);
+
   const containerStyle = {
     position: 'relative',
     width: '100%',
@@ -14,7 +16,18 @@ function VimeoEmbed({ videoUrl }) {
     top: 0,
     left: 0,
     width: '100%',
-    height: '100%'
+    height: '100%',
+    display: loaded ? 'block' : 'none'
+  };
+
+  const posterStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    objectFit: 'cover',
+    display: loaded ? 'none' : 'block'
   };
 
   const autoplayUrl = videoUrl.includes('?')
@@ -23,6 +36,9 @@ function VimeoEmbed({ videoUrl }) {
 
   return (
     <div style={containerStyle}>
+      {poster && (
+        <img src={poster} alt="Video poster" style={posterStyle} />
+      )}
       <iframe
         src={autoplayUrl}
         style={iframeStyle}
@@ -30,6 +46,7 @@ function VimeoEmbed({ videoUrl }) {
         allow="autoplay; fullscreen; picture-in-picture"
         allowFullScreen
         title="Vimeo Video"
+        onLoad={() => setLoaded(true)}
       ></iframe>
     </div>
   );
