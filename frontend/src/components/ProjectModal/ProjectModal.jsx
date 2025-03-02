@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import "./ProjectModal.scss";
+import "./projectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
