@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import styles from "./page.scss";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Navbar from "../components/Navbar/Navbar";
 import HomeMedia from "../components/HomeMedia/HomeMedia";
 import ProjectModal from "../components/ProjectModal/ProjectModal";
@@ -18,8 +18,8 @@ export default function Home() {
   const [forceVisible, setForceVisible] = useState(true);
   const [modalOpen, setModalOpen] = useState(false);
   const [currentProject, setCurrentProject] = useState(null);
-  const showNav = useHideOnScroll(0);
-
+  const modalRef = useRef(null);
+  const showNav = useHideOnScroll(0, modalOpen ? modalRef : null);
   useEffect(() => {
     setTimeout(() => {
       if (timeOutValidationActivated) {
@@ -226,7 +226,7 @@ export default function Home() {
           </div>
         )}
         {isMobile ? (
-          <MobileProjectModal isOpen={modalOpen} onClose={closeModal} project={currentProject} />
+          <MobileProjectModal isOpen={modalOpen} onClose={closeModal} project={currentProject} scrollRef={modalRef} />
         ) : (
           <ProjectModal isOpen={modalOpen} onClose={closeModal} project={currentProject} projects={projects} />
         )}

@@ -11,7 +11,7 @@ const useMobileProjectData = (project) => {
   return { mainMedia, restMedia };
 };
 
-const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
+const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scrollRef }) => {
   if (!isOpen || !project) return null;
 
   const { mainMedia, restMedia } = useMobileProjectData(project);
@@ -27,9 +27,9 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   const handleModalClick = (e) => e.stopPropagation();
 
   return (
-    <div className="mobileModalBackdrop" onClick={onClose}>
+    <div className="mobileModalBackdrop" onClick={onClose} >
       <div className="mobileModalContainer" onClick={handleModalClick}>
-        <div className="mobileModalContent">
+        <div className="mobileModalContent" ref={scrollRef}>
           {mainMedia && (
             <div className="mainMedia">
               {mainMedia.type === "video" ? (
