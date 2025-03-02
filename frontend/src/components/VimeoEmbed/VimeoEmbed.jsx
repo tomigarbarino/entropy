@@ -1,33 +1,41 @@
-import { useState, useEffect } from "react";
+'use client';
+import React from "react";
 
-const VimeoEmbed = ({ videoUrl }) => {
-  const [embedHtml, setEmbedHtml] = useState("");
+function VimeoEmbed({ videoUrl }) {
 
-  useEffect(() => {
-    async function fetchOEmbed() {
-      const encodedUrl = encodeURIComponent(videoUrl);
-      const oEmbedUrl = `https://vimeo.com/api/oembed.json?url=${encodedUrl}&width=640&height=360&autoplay=1&muted=1&playsinline=1`;
+  const containerStyle = {
+    position: 'relative',
+    width: '100%',
+    paddingBottom: '56.25%',
+    height: 0,
+    overflow: 'hidden'
+  };
 
+  const iframeStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    pointerEvents: 'none' 
+  };
 
-      try {
-        const response = await fetch(oEmbedUrl);
-        const data = await response.json();
-        setEmbedHtml(data.html);
-      } catch (error) {
-        console.error("Error fetching oEmbed data:", error);
-      }
-    }
-
-    fetchOEmbed();
-  }, [videoUrl]);
+  const autoplayUrl = videoUrl.includes('?')
+    ? `${videoUrl}&autoplay=1&background=1&title=0&byline=0&portrait=0`
+    : `${videoUrl}?autoplay=1&background=1&title=0&byline=0&portrait=0`;
 
   return (
-    <div
-      className="vimeoEmbed"
-      style={{ width: "100%", height: "100%" }}
-      dangerouslySetInnerHTML={{ __html: embedHtml }}
-    />
+    <div style={containerStyle}>
+      <iframe
+        src={autoplayUrl}
+        style={iframeStyle}
+        frameBorder="0"
+        allow="autoplay; fullscreen; picture-in-picture"
+        allowFullScreen
+        title="Vimeo Video"
+      ></iframe>
+    </div>
   );
-};
+}
 
 export default VimeoEmbed;

@@ -1,0 +1,80 @@
+@media only screen and (max-width: 768px) {
+    .mobileModalBackdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background-color: white;
+      z-index: 9999;
+      overflow-y: auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .mobileModalContainer {
+      position: relative;
+      width: 100%;
+      max-width: 600px;
+      max-height: 100vh;
+      background: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 20px;
+      box-sizing: border-box;
+      overflow-y: auto;
+    }
+    
+    .mobileModalContent {
+        width: 100%;
+        display: block; 
+      }
+      
+    
+    .mainMedia {
+      position: relative;
+      margin-bottom: 1rem;
+      width: 100%;
+      text-align: center;
+    }
+    
+    .mainMedia img,
+    .mainMedia video {
+      height: auto;
+      object-fit: contain;
+    }
+    
+    .media {
+      max-width: 100%;
+      object-fit: contain;
+    }
+    
+    .textContainer {
+        all: unset;
+        display: block;
+        width: 100%;
+        padding-bottom: 2rem;
+        margin-top: 1rem;
+      }
+      
+      
+
+    .projectSection {
+      width: 100%;
+    }
+    
+    .restMediaContainer {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      width: 100%;
+    }
+    
+    .mediaItem {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+    }
+  }

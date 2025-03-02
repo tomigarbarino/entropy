@@ -1,6 +1,7 @@
-"use client"
+"use client";
 import React, { useState, useEffect } from "react";
 import "./ProjectModal.scss";
+import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;
@@ -59,9 +60,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
     setCursorType(clientX < middle ? "prev" : "next");
   };
 
-
   const renderHowWeDidIt = () => {
-
     const paragraphs = Array.isArray(project.howWeDidIt)
       ? project.howWeDidIt
       : [project.howWeDidIt];
@@ -111,13 +110,17 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             }
           >
             {project.media[currentIndex].type === "video" ? (
-              <video
-                key={project.media[currentIndex].src}
-                src={project.media[currentIndex].src}
-                controls
-                autoPlay
-                className={`media ${animClass}`}
-              />
+              project.media[currentIndex].src.includes("vimeo.com") ? (
+                <VimeoEmbed videoUrl={project.media[currentIndex].src} />
+              ) : (
+                <video
+                  key={project.media[currentIndex].src}
+                  src={project.media[currentIndex].src}
+                  controls
+                  autoPlay
+                  className={`media ${animClass}`}
+                />
+              )
             ) : (
               <img
                 key={project.media[currentIndex].src}

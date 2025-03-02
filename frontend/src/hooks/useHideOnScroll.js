@@ -4,21 +4,12 @@ export default function useHideOnScroll(threshold = 0) {
   const [showNav, setShowNav] = useState(true);
 
   useEffect(() => {
-    let prevScrollPos = window.scrollY;
-
     const handleScroll = () => {
-      const currentScrollPos = window.scrollY;
-      
-      if (prevScrollPos > currentScrollPos || currentScrollPos <= threshold) {
-        setShowNav(true);
-      } else {
-        setShowNav(false);
-      }
-      prevScrollPos = currentScrollPos;
+      setShowNav(window.scrollY <= threshold);
     };
 
-    window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [threshold]);
 
   return showNav;

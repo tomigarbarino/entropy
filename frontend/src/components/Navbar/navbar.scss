@@ -31,12 +31,17 @@
             top: -14vh; 
           }
       }
-      @media screen and (max-width: 599px) and (min-width: 425px) {
+      @media screen and (max-width: 599px) and (min-width: 426px) {
         &--hide {
             top: -12vh; 
           }
         
       }
+        @media screen and (max-width: 424px) {
+            &--hide {
+                top: -10vh; 
+            }
+        }
     
       &--show {
         top: 0;
@@ -109,4 +114,9 @@
         }
       }
 
+      @media screen and (max-width: 425px) {
+        .contact p, .social p {
+          font-size: 10px;
+        }
+      }
 }

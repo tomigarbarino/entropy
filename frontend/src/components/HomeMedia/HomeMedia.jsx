@@ -1,10 +1,19 @@
 'use client';
-import Image from 'next/image';
-import React, { useState } from 'react';
+import Image from "next/image";
+import React, { useState } from "react";
 import "./homeMedia.scss";
-import VimeoEmbed from "../VimeoEmbed/VimeoEmbed"; 
+import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 
-const HomeMedia = ({ mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, forceVisible = false, onClick }) => {
+const HomeMedia = ({
+  media,
+  mediaSrc,
+  mediaAlt,
+  mediaNumber,
+  name,
+  forceVisible = false,
+  onClick,
+  isModal = false,
+}) => {
   const [wasMouseHoverActivated, setMouseHoverActivated] = useState(false);
   
   const updateVisibleByMouseHover = () => {
@@ -13,7 +22,7 @@ const HomeMedia = ({ mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, for
     }
   };
 
-  const isVimeo = isVideo && mediaSrc.includes("vimeo.com");
+  const videoMedia = media && media.find((m) => m.type === "video");
 
   return (
     <div 
@@ -21,17 +30,17 @@ const HomeMedia = ({ mediaSrc, mediaAlt, mediaNumber, isVideo = false, name, for
       onMouseOver={updateVisibleByMouseHover}
       onClick={onClick}
     >
-      {
-        isVideo ? (
-          isVimeo ? (
-            <VimeoEmbed videoUrl={mediaSrc} />
-          ) : (
-            <video src={mediaSrc} playsInline muted autoPlay loop></video>
-          )
-        ) : (
-          <Image src={mediaSrc} width={500} height={500} alt={mediaAlt ?? "image"} unoptimized={true} />
-        )
-      }
+      {isModal && videoMedia ? (
+        <VimeoEmbed videoUrl={videoMedia.src} />
+      ) : (
+        <Image 
+          src={mediaSrc} 
+          width={500} 
+          height={500} 
+          alt={mediaAlt ?? "image"} 
+          unoptimized={true} 
+        />
+      )}
       <span className='client'>{name}</span>
     </div>
   );
