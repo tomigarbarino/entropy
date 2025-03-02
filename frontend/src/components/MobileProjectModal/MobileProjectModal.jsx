@@ -2,6 +2,7 @@
 import React, { useEffect } from "react";
 import "./MobileProjectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
+import Button from "../Button/Button";
 
 const useMobileProjectData = (project) => {
   if (!project) return { mainMedia: null, restMedia: [] };
@@ -108,6 +109,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             </div>
           )}
         </div>
+        <Button text="Back to Home" onClick={onClose} />
       </div>
     </div>
   );

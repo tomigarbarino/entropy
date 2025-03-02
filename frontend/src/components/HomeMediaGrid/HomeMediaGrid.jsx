@@ -2,8 +2,14 @@
 import Image from "next/image";
 import React from "react";
 import "./homeMediaGrid.scss";
+import Button from "../Button/Button";
 
 const HomeMediaGrid = ({ projects, onProjectClick }) => {
+
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="homeMediaGrid">
       {projects.map((project) => (
@@ -27,6 +33,7 @@ const HomeMediaGrid = ({ projects, onProjectClick }) => {
           <span className="client">{project.name}</span>
         </div>
       ))}
+      <Button text="Back to Top" onClick={scrollToTop} />
     </div>
   );
 };
