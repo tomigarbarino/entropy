@@ -8,7 +8,8 @@ const Navbar = ({showNav}) => {
     <nav className={`navbar ${showNav ? 'navbar--show' : 'navbar--hide'}`}>
         <div className="contact--desktop">
             <p>CONTACT</p>
-            <p>+34 654 263 452</p>
+            <p>+54 9 2234 540881</p>
+            <p>+52 55484 47485 </p>
             <p>contact@entropypro.nyc</p>
         </div>
         <div className="logo">
@@ -22,7 +23,8 @@ const Navbar = ({showNav}) => {
         <div className="navbar__bottom">
           <div className="contact">
               <p>CONTACT</p>
-              <p>+34 654 263 452</p>
+              <p>+54 9 2234 540881</p>
+              <p>+52 55484 47485 </p>
               <p>contact@entropypro.nyc</p>
           </div>
           <div className="social">

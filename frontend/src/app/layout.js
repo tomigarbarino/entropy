@@ -25,6 +25,9 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/images/entropy_fav.gif" />
+      </head>
       <body>
         {children}
       </body>
