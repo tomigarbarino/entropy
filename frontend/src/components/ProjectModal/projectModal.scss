@@ -53,6 +53,11 @@
   align-items: flex-start;
   gap: 1rem;
   z-index: 1;
+  pointer-events: none;
+}
+
+.textContainer * {
+  pointer-events: auto;
 }
 
 @media screen and (min-width: 2560px) {
@@ -65,11 +70,6 @@
     right: 0.625rem;
   }
 
-  .mediaContainer {
-    width: 87.084rem;
-    height: 48.389rem;
-    top: 20px;
-  }
   
   
 }
@@ -95,7 +95,7 @@
 
 .mediaContainer {
   width: 80rem;
-    height: 48rem;
+    height: 44rem;
   overflow: hidden; 
   display: flex;
   align-items: center;
@@ -106,6 +106,7 @@
 
 .mediaContainer.video {
   top: 1rem;
+  height: 48rem;
 }
 
 

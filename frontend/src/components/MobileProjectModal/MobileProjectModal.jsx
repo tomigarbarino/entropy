@@ -35,7 +35,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
 
   return (
     <div className="mobileModalBackdrop" onClick={onClose}>
-      <div className="mobileModalContainer" onClick={handleModalClick}>
+      <div className="mobileModalContainer" onClick={handleModalClick} ref={scrollRef}>
         <div className="mobileModalContent" ref={scrollRef}>
           {mainMedia && (
             <div className="mainMedia">

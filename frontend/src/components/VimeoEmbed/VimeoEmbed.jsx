@@ -1,15 +1,16 @@
 'use client';
 import React, { useState } from "react";
 
-function VimeoEmbed({ videoUrl, poster }) {
+function VimeoEmbed({ videoUrl, poster, onOverlayClick }) {
   const [loaded, setLoaded] = useState(false);
 
   const containerStyle = {
     position: 'relative',
     width: '100%',
-    height: '100%',
+    paddingTop: '56.25%',
     overflow: 'hidden'
   };
+  
 
   const iframeStyle = {
     position: 'absolute',
@@ -30,6 +31,16 @@ function VimeoEmbed({ videoUrl, poster }) {
     display: loaded ? 'none' : 'block'
   };
 
+  const overlayStyle = {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    width: '100%',
+    height: '100%',
+    background: 'transparent',
+    cursor: 'inherit'
+  };
+
   const autoplayUrl = videoUrl.includes('?')
     ? `${videoUrl}&autoplay=1&background=1&title=0&byline=0&portrait=0`
     : `${videoUrl}?autoplay=1&background=1&title=0&byline=0&portrait=0`;
@@ -48,6 +59,7 @@ function VimeoEmbed({ videoUrl, poster }) {
         title="Vimeo Video"
         onLoad={() => setLoaded(true)}
       ></iframe>
+      <div style={overlayStyle} onClick={onOverlayClick}></div>
     </div>
   );
 }

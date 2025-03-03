@@ -125,7 +125,10 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             )}
             <Button
               text={isTextVisible ? "H1DE TEXT" : "Sh0w Text"}
-              onClick={() => setIsTextVisible(!isTextVisible)}
+              onClick={(e) => {
+                e.stopPropagation();
+                setIsTextVisible(!isTextVisible);
+              }}
             />
           </div>
         )}
