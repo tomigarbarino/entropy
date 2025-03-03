@@ -1,8 +1,9 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useState, useRef } from "react";
 import "./MobileProjectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
+import MediaModal from "../MediaModal/MediaModal";
 
 const getPosterFromProject = (project) => {
   if (!project || !project.media) return null;
@@ -12,47 +13,53 @@ const getPosterFromProject = (project) => {
 
 const useMobileProjectData = (project) => {
   if (!project) return { mainMedia: null, restMedia: [] };
-  const mainMedia = project.media?.[0] || null;
-  const restMedia = project.media?.slice(1) || [];
-  return { mainMedia, restMedia };
+  return { mainMedia: project.media?.[0] || null, restMedia: project.media?.slice(1) || [] };
 };
 
 const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scrollRef }) => {
-  if (!isOpen || !project) return null;
-
   const { mainMedia, restMedia } = useMobileProjectData(project);
   const projectPoster = getPosterFromProject(project);
 
-  useEffect(() => {
-    const handleKeyDown = (e) => {
-      if (e.key === "Escape") onClose();
-    };
-    document.addEventListener("keydown", handleKeyDown);
-    return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [onClose]);
+  const [isMediaModalOpen, setMediaModalOpen] = useState(false);
+  const [selectedMedia, setSelectedMedia] = useState(null);
+  const lastTapRef = useRef(0);
 
-  const handleModalClick = (e) => e.stopPropagation();
+  const handleMediaDoubleClick = (media) => {
+    setSelectedMedia(media);
+    setMediaModalOpen(true);
+  };
+
+  const handleTouchEnd = (e, media) => {
+    const now = Date.now();
+    if (now - lastTapRef.current < 300) {
+      handleMediaDoubleClick(media);
+      lastTapRef.current = 0;
+    } else {
+      lastTapRef.current = now;
+    }
+  };
+
+  if (!isOpen || !project) return null;
 
   return (
-    <div className="mobileModalBackdrop" onClick={onClose}>
-      <div className="mobileModalContainer" onClick={handleModalClick} ref={scrollRef}>
+    <div
+      className="mobileModalBackdrop"
+      onClick={(e) => {
+        if (!isMediaModalOpen) {
+          console.log("MobileProjectModal - Clic fuera, cerrando MobileProjectModal");
+          onClose();
+        }
+      }}
+    >
+      <div className="mobileModalContainer" onClick={(e) => e.stopPropagation()} ref={scrollRef}>
         <div className="mobileModalContent" ref={scrollRef}>
           {mainMedia && (
-            <div className="mainMedia">
+            <div className="mainMedia" onDoubleClick={() => handleMediaDoubleClick(mainMedia)} onTouchEnd={(e) => handleTouchEnd(e, mainMedia)}>
               {mainMedia.type === "video" ? (
                 mainMedia.src.includes("vimeo.com") ? (
-                  <VimeoEmbed
-                    videoUrl={mainMedia.src}
-                    poster={projectPoster}
-                  />
+                  <VimeoEmbed videoUrl={mainMedia.src} poster={projectPoster} />
                 ) : (
-                  <video
-                    src={mainMedia.src}
-                    controls
-                    autoPlay
-                    poster={projectPoster}
-                    className="media"
-                  />
+                  <video src={mainMedia.src} controls autoPlay poster={projectPoster} className="media" />
                 )
               ) : (
                 <img src={mainMedia.src} alt={project.name} className="media" />
@@ -65,22 +72,16 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
                 <div className="projectSection">
                   <h3>HH0W WE D1D 1T</h3>
                   {Array.isArray(project.howWeDidIt)
-                    ? project.howWeDidIt.map((paragraph, idx) => (
-                        <p key={idx}>{paragraph}</p>
-                      ))
+                    ? project.howWeDidIt.map((paragraph, idx) => <p key={idx}>{paragraph}</p>)
                     : <p>{project.howWeDidIt}</p>}
                 </div>
               )}
-
-              {project.roles && project.roles.length > 0 && (
+              {project.roles?.length > 0 && (
                 <div className="projectSection">
                   <h3>R0LES</h3>
-                  {project.roles.map((role, idx) => (
-                    <p key={idx}>{role}</p>
-                  ))}
+                  {project.roles.map((role, idx) => <p key={idx}>{role}</p>)}
                 </div>
               )}
-
               {project.details && (
                 <div className="projectSection">
                   <h3>DETA1LS</h3>
@@ -92,27 +93,15 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
           {restMedia.length > 0 && (
             <div className="restMediaContainer">
               {restMedia.map((mediaItem, idx) => (
-                <div key={idx} className="mediaItem">
+                <div key={idx} className="mediaItem" onDoubleClick={() => handleMediaDoubleClick(mediaItem)}>
                   {mediaItem.type === "video" ? (
                     mediaItem.src.includes("vimeo.com") ? (
-                      <VimeoEmbed
-                        videoUrl={mediaItem.src}
-                        poster={projectPoster}
-                      />
+                      <VimeoEmbed videoUrl={mediaItem.src} poster={projectPoster} />
                     ) : (
-                      <video
-                        src={mediaItem.src}
-                        controls
-                        poster={projectPoster}
-                        className="media"
-                      />
+                      <video src={mediaItem.src} controls poster={projectPoster} className="media" />
                     )
                   ) : (
-                    <img
-                      src={mediaItem.src}
-                      alt={`${project.name} - ${idx + 2}`}
-                      className="media"
-                    />
+                    <img src={mediaItem.src} alt={`${project.name} - ${idx + 2}`} className="media" />
                   )}
                 </div>
               ))}
@@ -121,6 +110,10 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
         </div>
         <Button text="Back to Home" onClick={onClose} />
       </div>
+
+      {isMediaModalOpen && (
+        <MediaModal media={selectedMedia} onClose={() => setMediaModalOpen(false)} projectPoster={projectPoster} projectName={project.name} />
+      )}
     </div>
   );
 };

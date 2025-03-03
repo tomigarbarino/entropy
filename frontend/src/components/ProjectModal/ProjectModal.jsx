@@ -6,7 +6,9 @@ import Button from "../Button/Button";
 
 const getPosterFromProject = (project) => {
   if (!project || !project.media) return null;
-  const imageMedia = project.media.find((mediaItem) => mediaItem.type === "image");
+  const imageMedia = project.media.find(
+    (mediaItem) => mediaItem.type === "image"
+  );
   return imageMedia ? imageMedia.src : null;
 };
 
@@ -14,9 +16,9 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;
 
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [cursorType, setCursorType] = useState("");
   const [animClass, setAnimClass] = useState("");
   const [isTextVisible, setIsTextVisible] = useState(showTexts);
+  const [scrollDirection, setScrollDirection] = useState("next");
 
   const hasText =
     (project.howWeDidIt &&
@@ -30,25 +32,21 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         onClose();
-      } else if (e.key === "ArrowRight") {
-        triggerNext();
-      } else if (e.key === "ArrowLeft") {
-        triggerPrev();
       }
     };
 
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, [currentIndex, animClass]);
+  }, []);
 
   const triggerNext = () => {
     if (animClass) return;
-    setAnimClass("fade-out");
+    setAnimClass("fade-out-up");
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex + 1 < project.media.length ? prevIndex + 1 : 0
       );
-      setAnimClass("fade-in");
+      setAnimClass("fade-in-up");
       setTimeout(() => {
         setAnimClass("");
       }, 500);
@@ -57,23 +55,27 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
 
   const triggerPrev = () => {
     if (animClass) return;
-    setAnimClass("fade-out");
+    setAnimClass("fade-out-down");
     setTimeout(() => {
       setCurrentIndex((prevIndex) =>
         prevIndex - 1 >= 0 ? prevIndex - 1 : project.media.length - 1
       );
-      setAnimClass("fade-in");
+      setAnimClass("fade-in-down");
       setTimeout(() => {
         setAnimClass("");
       }, 500);
     }, 500);
   };
 
-  const handleMouseMove = (e) => {
-    const { clientX, currentTarget } = e;
-    const { left, width } = currentTarget.getBoundingClientRect();
-    const middle = left + width / 2;
-    setCursorType(clientX < middle ? "prev" : "next");
+  const handleWheel = (e) => {
+    e.preventDefault();
+    if (e.deltaY > 0) {
+      setScrollDirection("next");
+      triggerNext();
+    } else if (e.deltaY < 0) {
+      setScrollDirection("prev");
+      triggerPrev();
+    }
   };
 
   const renderHowWeDidIt = () => {
@@ -87,16 +89,11 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
     ));
   };
 
-
   const projectPoster = getPosterFromProject(project);
 
   return (
     <div className="modalBackdrop" onClick={onClose}>
-      <div
-        className={`modalContainer ${cursorType}`}
-        onClick={(e) => e.stopPropagation()}
-        onMouseMove={handleMouseMove}
-      >
+      <div className="modalContainer" onClick={(e) => e.stopPropagation()}>
         {hasText && (
           <div className="textContainer">
             {isTextVisible && (
@@ -141,25 +138,27 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             className={`mediaContainer ${
               project.media[currentIndex].type === "video" ? "video" : ""
             }`}
-            onClick={() =>
-              cursorType === "next" ? triggerNext() : triggerPrev()
-            }
+            onWheel={handleWheel}
           >
             {project.media[currentIndex].type === "video" ? (
               project.media[currentIndex].src.includes("vimeo.com") ? (
-                <VimeoEmbed
-                  videoUrl={project.media[currentIndex].src}
-                  poster={projectPoster}
-                />
+                <div className={`videoWrapper ${animClass}`}>
+                  <VimeoEmbed
+                    videoUrl={project.media[currentIndex].src}
+                    poster={projectPoster}
+                  />
+                </div>
               ) : (
-                <video
-                  key={project.media[currentIndex].src}
-                  src={project.media[currentIndex].src}
-                  controls
-                  autoPlay
-                  poster={projectPoster}
-                  className={`media ${animClass}`}
-                />
+                <div className={`videoWrapper ${animClass}`}>
+                  <video
+                    key={project.media[currentIndex].src}
+                    src={project.media[currentIndex].src}
+                    controls
+                    autoPlay
+                    poster={projectPoster}
+                    className="media"
+                  />
+                </div>
               )
             ) : (
               <img

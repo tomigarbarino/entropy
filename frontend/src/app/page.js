@@ -53,7 +53,6 @@ export default function Home() {
       mediaSrc: "/images/budweiser_home.png",
       media: [
         { src: "https://player.vimeo.com/video/1060869323?h=c77a01b2b7&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
-        { src: "/images/budweiser_home.png", type: "image" },
       ]
     },
     {
