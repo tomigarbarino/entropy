@@ -26,4 +26,13 @@
     height: 100vh;
   }
   
+  .letterSpan {
+    transition: color 0.2s ease;
+    color: black; /* Color por defecto */
+  }
+  
+  .howWeDidItParagraph .letterSpan.highlight {
+    color: white !important;
+  }
+  
 }

@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./projectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
+import DynamicText from "../../hooks/DynamicText";
 
 const getPosterFromProject = (project) => {
   if (!project || !project.media) return null;
@@ -99,11 +100,17 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             {isTextVisible && (
               <>
                 {project.howWeDidIt && (
-                  <div className="projectSection">
-                    <h3>H0W WE D1D 1T</h3>
-                    {renderHowWeDidIt()}
-                  </div>
-                )}
+  <div className="projectSection">
+    <h3>H0W WE D1D 1T</h3>
+    {Array.isArray(project.howWeDidIt) ? (
+      project.howWeDidIt.map((para, index) => (
+        <DynamicText key={index} text={para} />
+      ))
+    ) : (
+      <DynamicText text={project.howWeDidIt} />
+    )}
+  </div>
+)}
                 {project.roles && project.roles.length > 0 && (
                   <div className="projectSection">
                     <h3>R0LES</h3>
@@ -135,6 +142,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             &times;
           </div>
           <div
+          id="mediaContainer"
             className={`mediaContainer ${
               project.media[currentIndex].type === "video" ? "video" : ""
             }`}
