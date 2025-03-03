@@ -22,21 +22,10 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
 
   const [isMediaModalOpen, setMediaModalOpen] = useState(false);
   const [selectedMedia, setSelectedMedia] = useState(null);
-  const lastTapRef = useRef(0);
 
-  const handleMediaDoubleClick = (media) => {
+  const handleMediaClick = (media) => {
     setSelectedMedia(media);
     setMediaModalOpen(true);
-  };
-
-  const handleTouchEnd = (e, media) => {
-    const now = Date.now();
-    if (now - lastTapRef.current < 300) {
-      handleMediaDoubleClick(media);
-      lastTapRef.current = 0;
-    } else {
-      lastTapRef.current = now;
-    }
   };
 
   if (!isOpen || !project) return null;
@@ -54,7 +43,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
       <div className="mobileModalContainer" onClick={(e) => e.stopPropagation()} ref={scrollRef}>
         <div className="mobileModalContent" ref={scrollRef}>
           {mainMedia && (
-            <div className="mainMedia" onDoubleClick={() => handleMediaDoubleClick(mainMedia)} onTouchEnd={(e) => handleTouchEnd(e, mainMedia)}>
+            <div className="mainMedia" onClick={() => handleMediaClick(mainMedia)}>
               {mainMedia.type === "video" ? (
                 mainMedia.src.includes("vimeo.com") ? (
                   <VimeoEmbed videoUrl={mainMedia.src} poster={projectPoster} />
@@ -93,7 +82,11 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
           {restMedia.length > 0 && (
             <div className="restMediaContainer">
               {restMedia.map((mediaItem, idx) => (
-                <div key={idx} className="mediaItem" onDoubleClick={() => handleMediaDoubleClick(mediaItem)}>
+                <div
+                  key={idx}
+                  className="mediaItem"
+                  onClick={() => handleMediaClick(mediaItem)}
+                >
                   {mediaItem.type === "video" ? (
                     mediaItem.src.includes("vimeo.com") ? (
                       <VimeoEmbed videoUrl={mediaItem.src} poster={projectPoster} />
@@ -112,7 +105,12 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
       </div>
 
       {isMediaModalOpen && (
-        <MediaModal media={selectedMedia} onClose={() => setMediaModalOpen(false)} projectPoster={projectPoster} projectName={project.name} />
+        <MediaModal 
+          media={selectedMedia} 
+          onClose={() => setMediaModalOpen(false)} 
+          projectPoster={projectPoster} 
+          projectName={project.name} 
+        />
       )}
     </div>
   );

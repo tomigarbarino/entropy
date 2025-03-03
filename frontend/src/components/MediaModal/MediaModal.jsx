@@ -1,5 +1,6 @@
 "use client";
 import React, { useEffect } from "react";
+import ReactDOM from "react-dom";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import "./MediaModal.scss";
 
@@ -9,7 +10,7 @@ const MediaModal = ({ media, onClose, projectPoster, projectName }) => {
   useEffect(() => {
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
-        console.log("Escape presionado, cerrando solo MediaModal");
+        console.log("Escape presionado, cerrando MediaModal");
         onClose(); 
       }
     };
@@ -18,30 +19,30 @@ const MediaModal = ({ media, onClose, projectPoster, projectName }) => {
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  return (
+  return ReactDOM.createPortal(
     <div
       className="mediaModalBackdrop"
-      onClick={(e) => {
-        console.log("MediaModal - Clic fuera, cerrando solo MediaModal");
-        e.stopPropagation(); 
-        onClose();
-      }}
+      onClick={onClose}
     >
-      <div
-        className="mediaModalContainer"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="mediaModalContainer">
         {media.type === "video" ? (
           media.src.includes("vimeo.com") ? (
             <VimeoEmbed videoUrl={media.src} poster={projectPoster} />
           ) : (
-            <video src={media.src} controls autoPlay poster={projectPoster} className="expanded-media" />
+            <video
+              src={media.src}
+              controls
+              autoPlay
+              poster={projectPoster}
+              className="expanded-media"
+            />
           )
         ) : (
           <img src={media.src} alt={projectName} className="expanded-media" />
         )}
       </div>
-    </div>
+    </div>,
+    document.body
   );
 };
 
