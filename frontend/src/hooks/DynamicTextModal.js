@@ -1,20 +1,21 @@
 import React, { useEffect, useRef } from "react";
 
 function isOverlapping(r1, r2) {
-    const offset = 11; 
-    return !(
-      (r1.right - offset) < r2.left ||
-      r1.left > r2.right ||
-      r1.bottom < r2.top ||
-      r1.top > r2.bottom
-    );
-  }
-  
-const DynamicText = ({ text }) => {
+  const offset = 11; 
+  return !(
+    (r1.right - offset) < r2.left ||
+    r1.left > r2.right ||
+    r1.bottom < r2.top ||
+    r1.top > r2.bottom
+  );
+}
+
+const DynamicTextModal = ({ text, mediaContainerId = "mediaContainer" }) => {
   const textRef = useRef(null);
+  const animationRef = useRef(null);
 
   const updateTextColors = () => {
-    const mediaElement = document.getElementById("mediaContainer");
+    const mediaElement = document.getElementById(mediaContainerId);
     if (!mediaElement || !textRef.current) return;
 
     const mediaRect = mediaElement.getBoundingClientRect();
@@ -30,6 +31,11 @@ const DynamicText = ({ text }) => {
     });
   };
 
+  const animate = () => {
+    updateTextColors();
+    animationRef.current = requestAnimationFrame(animate);
+  };
+
   useEffect(() => {
     if (textRef.current) {
       const letters = text.split("");
@@ -37,19 +43,15 @@ const DynamicText = ({ text }) => {
         .map((letter) => `<span class="letterSpan">${letter}</span>`)
         .join("");
     }
-
-    updateTextColors();
-
-    window.addEventListener("resize", updateTextColors);
-    window.addEventListener("scroll", updateTextColors);
+    
+    animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      window.removeEventListener("resize", updateTextColors);
-      window.removeEventListener("scroll", updateTextColors);
+      if (animationRef.current) cancelAnimationFrame(animationRef.current);
     };
-  }, [text]);
+  }, [text, mediaContainerId]);
 
   return <p ref={textRef} className="howWeDidItParagraph"></p>;
 };
 
-export default DynamicText;
+export default DynamicTextModal;

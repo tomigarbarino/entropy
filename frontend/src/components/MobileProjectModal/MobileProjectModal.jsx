@@ -43,7 +43,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
       <div className="mobileModalContainer" onClick={(e) => e.stopPropagation()} ref={scrollRef}>
         <div className="mobileModalContent" ref={scrollRef}>
           {mainMedia && (
-            <div className="mainMedia" onClick={() => handleMediaClick(mainMedia)}>
+            <div id="mediaContainer" className="mainMedia" onClick={() => handleMediaClick(mainMedia)}>
               {mainMedia.type === "video" ? (
                 mainMedia.src.includes("vimeo.com") ? (
                   <VimeoEmbed videoUrl={mainMedia.src} poster={projectPoster} />
@@ -80,7 +80,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
             </div>
           )}
           {restMedia.length > 0 && (
-            <div className="restMediaContainer">
+            <div id="mediaContainer" className="restMediaContainer">
               {restMedia.map((mediaItem, idx) => (
                 <div
                   key={idx}

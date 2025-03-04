@@ -28,10 +28,14 @@
   
   .letterSpan {
     transition: color 0.2s ease;
-    color: black; /* Color por defecto */
+    color: black; 
   }
   
   .howWeDidItParagraph .letterSpan.highlight {
+    color: white !important;
+  }
+
+  .letterSpan.highlight {
     color: white !important;
   }
   

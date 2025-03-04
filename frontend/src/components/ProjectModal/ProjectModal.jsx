@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import "./projectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
-import DynamicText from "../../hooks/DynamicText";
+import DynamicText from "../../hooks/DynamicTextModal";
 
 const getPosterFromProject = (project) => {
   if (!project || !project.media) return null;
