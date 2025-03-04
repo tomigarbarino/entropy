@@ -6,12 +6,16 @@ import Button from "../Button/Button";
 import DynamicText from "../../hooks/DynamicTextModal";
 
 const getPosterFromProject = (project) => {
-  if (!project || !project.media) return null;
-  const imageMedia = project.media.find(
-    (mediaItem) => mediaItem.type === "image"
-  );
-  return imageMedia ? imageMedia.src : null;
+  if (!project) return null;
+  if (project.media && project.media.length > 0) {
+    const imageMedia = project.media.find(
+      (mediaItem) => mediaItem.type === "image"
+    );
+    if (imageMedia) return imageMedia.src;
+  }
+  return project.mediaSrc || null;
 };
+
 
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;

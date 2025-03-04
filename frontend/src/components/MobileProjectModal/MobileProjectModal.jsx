@@ -6,10 +6,16 @@ import Button from "../Button/Button";
 import MediaModal from "../MediaModal/MediaModal";
 
 const getPosterFromProject = (project) => {
-  if (!project || !project.media) return null;
-  const imageMedia = project.media.find((mediaItem) => mediaItem.type === "image");
-  return imageMedia ? imageMedia.src : null;
+  if (!project) return null;
+  if (project.media && project.media.length > 0) {
+    const imageMedia = project.media.find(
+      (mediaItem) => mediaItem.type === "image"
+    );
+    if (imageMedia) return imageMedia.src;
+  }
+  return project.mediaSrc || null;
 };
+
 
 const useMobileProjectData = (project) => {
   if (!project) return { mainMedia: null, restMedia: [] };
