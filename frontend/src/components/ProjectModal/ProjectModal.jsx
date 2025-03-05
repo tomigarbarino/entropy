@@ -200,11 +200,9 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
               />
             )}
           </div>
-
           <div
-            className="projectName"
-            style={{ bottom: project.nameBottom ? project.nameBottom : "1rem" }}
-          >
+      className="projectName"
+    >
             {project.name}
           </div>
           <div className="closeButton" onClick={onClose}>

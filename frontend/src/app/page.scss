@@ -14,6 +14,11 @@
     .home {
       overflow-y: hidden;
     }
+
+    @media screen  and (max-width: 1024px) and (min-width: 769px) {
+        gap: calc-size(140); 
+        
+    }
   }
   
   .row {
