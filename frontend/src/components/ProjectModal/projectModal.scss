@@ -62,19 +62,6 @@
   pointer-events: auto;
 }
 
-@media screen and (min-width: 2560px) {
-  .modalContainer {
-    height: 65vh;
-  }
-
-  .projectName {
-    bottom: 2rem;
-    right: 0rem;
-  }
-
-  
-  
-}
 
 .projectTitle {
   font-size: 18px;
@@ -237,14 +224,12 @@
   }
 }
 
-
-
 .textContainer,
 .projectTitle,
 .projectDescription,
 .projectSection,
 .howWeDidItParagraph,
-.projectName
+.projectName,
 .client {
   font-size: 16px !important;
 }
@@ -331,7 +316,7 @@
   .mediaContainer.video {
     position: absolute; 
     top: 47%;
-; 
+ 
     left:  8%;
     transform: translateY(-50%);
     width: 80vw;
@@ -339,8 +324,10 @@
   }
 
   .textContainer {
-    right: 75%;
+    right: 70%;
     width: 35%;
+    top: 58%;
+    
   }
 
   .textContainer,
@@ -359,7 +346,7 @@
 
 .projectName {
   bottom: 2rem;
-  right: -3rem;
+  right: 0rem;
 }
 
 .projectSection h3.howWeDidItHeader,
@@ -372,4 +359,54 @@ font-weight: normal !important;
 
 
 
+}
+
+@media screen and (min-width: 1441px) and (max-width: 1920px) {
+  .textContainer {
+    right: 70%;
+    width: 35%;
+    top: 58%;
+    
+  }
+
+  .mediaContainer {
+  
+    top: 10rem;
+    left: 3.5rem;
+   
+  }
+
+  .mediaContainer.video {
+    width: 70%;
+    height: 40rem;
+    max-width: 1200px;
+    position: absolute; 
+    top: 47%;
+ 
+    left:  6%;
+    transform: translateY(-50%);
+    width: 80vw;
+    
+  }
+  .projectName {
+    bottom: 2rem;
+    right: -3rem;
+  }
+
+
+  
+}
+
+@media screen and (min-width: 2560px) {
+  .modalContainer {
+    height: 65vh;
+  }
+
+  .projectName {
+    bottom: 2rem;
+    right: 0rem;
+  }
+
+  
+  
 }
