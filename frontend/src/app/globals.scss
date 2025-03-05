@@ -46,4 +46,12 @@
 font-weight: normal !important;
 }
 
+.modalContainer.prev {
+  cursor: url(/svgs/PREV.svg) 16 16, auto;
+}
+
+.modalContainer.next {
+  cursor: url(/svgs/NEXT.svg) 16 16, auto;
+}
+
 }

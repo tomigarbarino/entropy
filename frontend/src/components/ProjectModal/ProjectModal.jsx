@@ -92,7 +92,6 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
     }
   };
 
-
   const handleClickMedia = () => {
     if (cursorDirection === "prev") {
       triggerPrev();
@@ -150,15 +149,14 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
         )}
 
         <div className="modalContent">
-          <div className="closeButton" onClick={onClose}>
-            &times;
-          </div>
+        <div className="closeButton" onClick={onClose}>
+  x
+</div>
+
           <div
             id="mediaContainer"
             ref={mediaContainerRef}
-            className={`mediaContainer ${
-              project.media[currentIndex].type === "video" ? "video" : ""
-            }`}
+            className={`mediaContainer ${project.media[currentIndex].type === "video" ? "video" : ""}`}
             onWheel={handleWheel}
             onMouseMove={handleMouseMove}
             onClick={handleClickMedia}
@@ -194,11 +192,11 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
           </div>
 
           <div
-  className="projectName"
-  style={{ bottom: project.nameBottom ? project.nameBottom : "1rem" }}
->
-  {project.name}
-</div>
+            className="projectName"
+            style={{ bottom: project.nameBottom ? project.nameBottom : "1rem" }}
+          >
+            {project.name}
+          </div>
         </div>
       </div>
     </div>

@@ -17,6 +17,10 @@
         line-height: calc-size(23);
     }
 
+    .social--desktop p {
+      margin: 0px 0;
+    }
+
     .navbar__bottom {
         display: none;
       }
@@ -49,6 +53,7 @@
         
     .contact--desktop {
         text-align: left; 
+        padding-top: 2rem;
     }
 
     .logo {
@@ -177,4 +182,10 @@
       .letterSpan.highlight {
         color: white !important;
       }
+
+      .social--desktop p {
+        margin: 0px 0 !important;
+        padding: 0px 0 !important;
+      }
+      
 }
