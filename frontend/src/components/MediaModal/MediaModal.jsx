@@ -3,6 +3,7 @@ import React, { useEffect, useState, useRef } from "react";
 import ReactDOM from "react-dom";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import "./MediaModal.scss";
+import Button from "../Button/Button";
 
 const MediaModal = ({
   media,
@@ -83,47 +84,54 @@ const MediaModal = ({
       ? { width: dimensions.width, height: dimensions.height }
       : {};
 
-  return ReactDOM.createPortal(
-    <div 
-      className="mediaModalBackdrop" 
-      onClick={onClose}
-      onTouchEnd={handleBackdropTouchEnd}
-    >
-      <div
-        className={`mediaModalContainer ${transitionClass}`}
-        onClick={(e) => e.stopPropagation()}
-        onTouchStart={handleTouchStart}
-        onTouchMove={handleTouchMove}
-        onTouchEnd={handleTouchEnd}
-        style={containerStyle}
-      >
-        {media.type === "video" ? (
-          media.src.includes("vimeo.com") ? (
-            <VimeoEmbed videoUrl={media.src} poster={projectPoster} />
-          ) : (
-            <video
-              ref={mediaRef}
-              src={media.src}
-              controls
-              autoPlay
-              poster={projectPoster}
-              className="expanded-media"
-              onLoadedData={handleLoad}
-            />
-          )
-        ) : (
-          <img
-            ref={mediaRef}
-            src={media.src}
-            alt={projectName}
-            className="expanded-media"
-            onLoad={handleLoad}
-          />
-        )}
-      </div>
-    </div>,
-    document.body
-  );
+      return ReactDOM.createPortal(
+        <div 
+          className="mediaModalBackdrop" 
+          onClick={onClose}
+          onTouchEnd={handleBackdropTouchEnd}
+        >
+          <div className="mediaModalContent">
+            <div
+              className={`mediaModalContainer ${transitionClass}`}
+              onClick={(e) => e.stopPropagation()}
+              onTouchStart={handleTouchStart}
+              onTouchMove={handleTouchMove}
+              onTouchEnd={handleTouchEnd}
+              style={containerStyle}
+            >
+              {media.type === "video" ? (
+                media.src.includes("vimeo.com") ? (
+                  <VimeoEmbed videoUrl={media.src} poster={projectPoster} />
+                ) : (
+                  <video
+                    ref={mediaRef}
+                    src={media.src}
+                    controls
+                    autoPlay
+                    poster={projectPoster}
+                    className="expanded-media"
+                    onLoadedData={handleLoad}
+                  />
+                )
+              ) : (
+                <img
+                  ref={mediaRef}
+                  src={media.src}
+                  alt={projectName}
+                  className="expanded-media"
+                  onLoad={handleLoad}
+                />
+              )}
+            </div>
+            <div className="buttonContainer">
+              <Button text="BACK" onClick={onClose} />
+            </div>
+          </div>
+        </div>,
+        document.body
+      );
+      
+      
 };
 
 export default MediaModal;

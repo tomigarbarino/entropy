@@ -69,7 +69,7 @@
 
   .projectName {
     bottom: 2rem;
-    right: 0.625rem;
+    right: 0rem;
   }
 
   
@@ -89,7 +89,7 @@
 .projectName {
   position: absolute;
   bottom: 3rem; 
-  right: 0.625rem;  
+  right: 0rem;  
   padding: 5px 10px;
   border-radius: 3px;
   font-size: 16px;
@@ -196,10 +196,7 @@
 }
 
 
-.howWeDidItParagraph {
-  margin-bottom: 1rem;
-  margin-top: 2rem;
-}
+
 
 
 .closeButton {
@@ -259,6 +256,10 @@
   cursor: url(/svgs/NEXT.svg) 16 16, auto;
 }
 
+.spacer {
+ padding-bottom: 2rem;
+}
+
 @media screen and (min-width: 1024px) and (max-width: 1280px) {
   .media {
     width: 100%;
@@ -286,6 +287,7 @@
   .textContainer {
     right: 70%;
     width: 35%;
+    top: 58%;
     
   }
 
@@ -295,17 +297,18 @@
   .projectSection,
   .howWeDidItParagraph,
   .projectName
+  .back-button
   .client {
-    font-size: 15px !important;
+    font-size: 14px !important;
   }
 .closeButton {
-  right: -3rem;
-  top: 3rem;
+  right: -2.5rem;
+  top: 8rem;
 }
 
 .projectName {
   bottom: 9rem;
-  right: 3rem;
+  right: 0rem;
 
 }
 }
@@ -363,7 +366,6 @@
 .projectSection h3.detailsHeader {
 font-weight: normal !important;
 }
-
 
 
 

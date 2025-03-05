@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 function isOverlapping(r1, r2) {
-  const offset = 11; 
+  const offset = 0; 
   return !(
     (r1.right - offset) < r2.left ||
     r1.left > r2.right ||
@@ -53,8 +53,9 @@ const DynamicTextModal = ({ text, mediaContainerId = "mediaContainer" }) => {
     if (textRef.current) {
       const letters = text.split("");
       textRef.current.innerHTML = letters
-        .map((letter) => `<span class="letterSpan">${letter}</span>`)
-        .join("");
+      .map(letter => letter === " " ? " " : `<span class="letterSpan">${letter}</span>`)
+      .join("");
+    
     }
     
     animationRef.current = requestAnimationFrame(animate);

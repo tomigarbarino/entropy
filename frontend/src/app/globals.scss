@@ -29,6 +29,7 @@
   .letterSpan {
     transition: color 0.2s ease;
     color: black; 
+    display: inline;
   }
   
   .howWeDidItParagraph .letterSpan.highlight {

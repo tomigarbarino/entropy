@@ -104,14 +104,21 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
 
   return (
     <div className="modalBackdrop" onClick={onClose}>
-      <div className={`modalContainer ${cursorDirection}`} onClick={(e) => e.stopPropagation()}>
+      <div
+        className={`modalContainer ${cursorDirection}`}
+        onClick={(e) => e.stopPropagation()}
+      >
         {hasText && (
           <div className="textContainer">
             {isTextVisible && (
               <>
                 {project.howWeDidIt && (
                   <div className="projectSection">
-                    <h3 className="howWeDidItHeader">H0W WE D1D 1T</h3>
+                    <DynamicText
+                      text="H0W WE D1D 1T"
+                      className="howWeDidItHeader"
+                    />
+                    <div className="spacer" />
                     {Array.isArray(project.howWeDidIt) ? (
                       project.howWeDidIt.map((para, index) => (
                         <DynamicText key={index} text={para} />
@@ -125,7 +132,11 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                   <div className="projectSection">
                     <h3 className="rolesHeader">R0LES</h3>
                     {project.roles.map((role, index) => (
-                      <p key={index}>{role}</p>
+                      <DynamicText
+                        key={index}
+                        text={role}
+                        className="roleClass"
+                      />
                     ))}
                   </div>
                 )}
@@ -149,14 +160,16 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
         )}
 
         <div className="modalContent">
-        <div className="closeButton" onClick={onClose}>
-  x
-</div>
+          <div className="closeButton" onClick={onClose}>
+            x
+          </div>
 
           <div
             id="mediaContainer"
             ref={mediaContainerRef}
-            className={`mediaContainer ${project.media[currentIndex].type === "video" ? "video" : ""}`}
+            className={`mediaContainer ${
+              project.media[currentIndex].type === "video" ? "video" : ""
+            }`}
             onWheel={handleWheel}
             onMouseMove={handleMouseMove}
             onClick={handleClickMedia}
