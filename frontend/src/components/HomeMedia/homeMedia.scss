@@ -1,31 +1,152 @@
 @use "../../styles/mixins" as *;
 
-.homeMedia{
-   
-     img,video{
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-     }
-     cursor: pointer;
+.homeMedia {
+  position: relative;
+  cursor: pointer;
+  transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out;
 
-     .client{
-      position: absolute;
-      font-size: calc-size(15);
-     }
+  // Este contenedor se usa para encerrar el zoom sin afectar el layout global
+  .imgInner {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+  }
 
-     transition: opacity 0.3s ease-in-out, transform 0.3s ease-in-out; 
-     &:hover {
-      img{
-         transform: scale(1.05); 
-      }
-     }
-   
-     &.notVisible{
-      opacity: 0;
-     }
+  // .imgOuter será el que reciba los posicionamientos (offsets negativos) que ya usabas
+  .imgOuter {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
 
-     &.visible{
-      opacity: 1;
-     }
+  /* Aplicamos el efecto de zoom sobre la imagen que está dentro de .imgInner */
+  .imgInner img,
+  .imgInner video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease-in-out;
+    transform-origin: center;
+  }
+  
+  &:hover .imgInner img,
+  &:hover .imgInner video {
+    transform: scale(1.05);
+  }
+
+  .client {
+    position: absolute;
+    font-size: calc-size(15);
+  }
+
+  &.notVisible {
+    opacity: 0;
+  }
+  &.visible {
+    opacity: 1;
+  }
+}
+
+
+.homeMedia.mediaNumber-1 {
+  width: calc-size(350);
+  height: calc-size(250);
+  .imgOuter {
+    position: absolute;
+    bottom: calc-size(-120);
+  }
+  .client {
+    bottom: calc-size(-150);
+    right: 0;
+  }
+}
+.homeMedia.mediaNumber-2 {
+  width: calc-size(610);
+  height: calc-size(300);
+  .imgOuter {
+    position: absolute;
+    right: calc-size(-10);
+  }
+  .client {
+    bottom: calc-size(-32);
+    right: calc-size(-12);
+  }
+}
+.homeMedia.mediaNumber-3 {
+  width: calc-size(403);
+  height: calc-size(260);
+  .imgOuter {
+    position: absolute;
+    bottom: calc-size(-30);
+  }
+  .client {
+    bottom: calc-size(-62);
+    right: 0;
+  }
+}
+.homeMedia.mediaNumber-4 {
+  width: calc-size(187);
+  height: calc-size(187);
+  .imgOuter {
+    position: absolute;
+    bottom: calc-size(-200);
+  }
+  .client {
+    bottom: calc-size(-230);
+    right: 0;
+  }
+  @media screen and (min-width: 1440px) and (max-width: 1920px) {
+    height: calc-size(140);
+  }
+}
+.homeMedia.mediaNumber-5 {
+  width: calc-size(377);
+  height: calc-size(210);
+  .imgOuter {
+    position: absolute;
+    bottom: calc-size(-80);
+    right: calc-size(-150);
+  }
+  .client {
+    bottom: calc-size(-112);
+    right: calc-size(-150);
+  }
+}
+.homeMedia.mediaNumber-6 {
+  width: calc-size(300);
+  height: calc-size(380);
+  .imgOuter {
+    position: absolute;
+    right: calc-size(-95);
+  }
+  .client {
+    bottom: calc-size(-26);
+    right: calc-size(-92);
+  }
+}
+.homeMedia.mediaNumber-7 {
+  width: calc-size(353);
+  height: calc-size(310);
+  .imgOuter {
+    position: absolute;
+    right: calc-size(-40);
+    bottom: calc-size(-35);
+  }
+  .client {
+    bottom: calc-size(-65);
+    right: calc-size(-40);
+  }
+}
+.homeMedia.mediaNumber-8 {
+  width: calc-size(420);
+  height: calc-size(211);
+  .imgOuter {
+    position: absolute;
+    bottom: calc-size(-100);
+  }
+  .client {
+    bottom: calc-size(-130);
+    right: 0;
+  }
 }

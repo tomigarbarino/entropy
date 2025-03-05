@@ -15,7 +15,7 @@ const HomeMedia = ({
   isModal = false,
 }) => {
   const [wasMouseHoverActivated, setMouseHoverActivated] = useState(false);
-  
+
   const updateVisibleByMouseHover = () => {
     if (!wasMouseHoverActivated) {
       setMouseHoverActivated(true);
@@ -33,13 +33,17 @@ const HomeMedia = ({
       {isModal && videoMedia ? (
         <VimeoEmbed videoUrl={videoMedia.src} />
       ) : (
-        <Image 
-          src={mediaSrc} 
-          width={500} 
-          height={500} 
-          alt={mediaAlt ?? "image"} 
-          unoptimized={true} 
-        />
+        <div className="imgOuter">
+          <div className="imgInner">
+            <Image 
+              src={mediaSrc} 
+              width={500} 
+              height={500} 
+              alt={mediaAlt ?? "image"} 
+              unoptimized={true} 
+            />
+          </div>
+        </div>
       )}
       <span className='client'>{name}</span>
     </div>
