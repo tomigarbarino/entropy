@@ -10,8 +10,8 @@ const MediaModal = ({
   onClose,
   projectPoster,
   projectName,
-  onSwipeNext, 
-  onSwipePrev
+  onSwipeNext,
+  onSwipePrev,
 }) => {
   if (!media) return null;
 
@@ -19,12 +19,12 @@ const MediaModal = ({
   const [touchEndY, setTouchEndY] = useState(null);
   const swipeThreshold = 50;
   const [dimensions, setDimensions] = useState({ width: null, height: null });
-  
+
   // Estado para la imagen actualmente mostrada
   const [displayedMedia, setDisplayedMedia] = useState(media);
   // Estado para almacenar la nueva imagen pendiente
   const [pendingMedia, setPendingMedia] = useState(null);
-  
+
   const [transitionClass, setTransitionClass] = useState("slide-in");
   const mediaRef = useRef(null);
   const containerRef = useRef(null);
@@ -33,6 +33,7 @@ const MediaModal = ({
     const handleKeyDown = (e) => {
       if (e.key === "Escape") {
         console.log("Escape presionado, cerrando MediaModal");
+        e.stopPropagation();
         onClose();
       }
     };
@@ -41,7 +42,6 @@ const MediaModal = ({
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
 
-  // Efecto: Si cambia el prop `media`, guardamos la nueva imagen en pending y disparar transición de salida.
   useEffect(() => {
     if (media.src !== displayedMedia.src) {
       setPendingMedia(media);
@@ -49,12 +49,10 @@ const MediaModal = ({
     }
   }, [media, displayedMedia]);
 
-  // Manejo de transición: cuando termina la animación y hay media pendiente, actualizamos.
   const handleTransitionEnd = () => {
     if (transitionClass === "slide-out" && pendingMedia) {
       setDisplayedMedia(pendingMedia);
       setPendingMedia(null);
-      // Después de actualizar la imagen, activamos la transición de entrada.
       setTransitionClass("slide-in");
     }
   };
@@ -83,21 +81,24 @@ const MediaModal = ({
 
   const handleLoad = () => {
     if (mediaRef.current) {
-      const width = mediaRef.current.naturalWidth || mediaRef.current.videoWidth;
-      const height = mediaRef.current.naturalHeight || mediaRef.current.videoHeight;
+      const width =
+        mediaRef.current.naturalWidth || mediaRef.current.videoWidth;
+      const height =
+        mediaRef.current.naturalHeight || mediaRef.current.videoHeight;
       setDimensions({ width, height });
     }
   };
 
   const handleBackdropTouchEnd = (e) => {
     if (e.target.classList.contains("mediaModalBackdrop")) {
+      e.stopPropagation();
       onClose();
     }
   };
 
   return ReactDOM.createPortal(
-    <div 
-      className="mediaModalBackdrop" 
+    <div
+      className="mediaModalBackdrop"
       onClick={onClose}
       onTouchEnd={handleBackdropTouchEnd}
     >
@@ -113,7 +114,10 @@ const MediaModal = ({
         >
           {displayedMedia.type === "video" ? (
             displayedMedia.src.includes("vimeo.com") ? (
-              <VimeoEmbed videoUrl={displayedMedia.src} poster={projectPoster} />
+              <VimeoEmbed
+                videoUrl={displayedMedia.src}
+                poster={projectPoster}
+              />
             ) : (
               <video
                 ref={mediaRef}
@@ -136,7 +140,13 @@ const MediaModal = ({
           )}
         </div>
         <div className="buttonContainer">
-          <Button text="BACK" onClick={onClose} />
+          <Button
+            text="BACK"
+            onClick={(e) => {
+              e.stopPropagation();
+              onClose();
+            }}
+          />
         </div>
       </div>
     </div>,
