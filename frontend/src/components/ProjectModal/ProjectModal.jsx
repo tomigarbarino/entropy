@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "./projectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
@@ -19,10 +19,11 @@ const getPosterFromProject = (project) => {
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;
 
+  const mediaContainerRef = useRef(null);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [animClass, setAnimClass] = useState("");
   const [isTextVisible, setIsTextVisible] = useState(showTexts);
-  const [scrollDirection, setScrollDirection] = useState("next");
+  const [cursorDirection, setCursorDirection] = useState("next");
 
   const hasText =
     (project.howWeDidIt &&
@@ -74,30 +75,37 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   const handleWheel = (e) => {
     e.preventDefault();
     if (e.deltaY > 0) {
-      setScrollDirection("next");
       triggerNext();
     } else if (e.deltaY < 0) {
-      setScrollDirection("prev");
       triggerPrev();
     }
   };
 
-  const renderHowWeDidIt = () => {
-    const paragraphs = Array.isArray(project.howWeDidIt)
-      ? project.howWeDidIt
-      : [project.howWeDidIt];
-    return paragraphs.map((para, index) => (
-      <p key={index} className="howWeDidItParagraph">
-        {para}
-      </p>
-    ));
+  const handleMouseMove = (e) => {
+    if (!mediaContainerRef.current) return;
+    const rect = mediaContainerRef.current.getBoundingClientRect();
+    const relativeY = e.clientY - rect.top;
+    if (relativeY < rect.height / 2) {
+      setCursorDirection("prev");
+    } else {
+      setCursorDirection("next");
+    }
+  };
+
+
+  const handleClickMedia = () => {
+    if (cursorDirection === "prev") {
+      triggerPrev();
+    } else if (cursorDirection === "next") {
+      triggerNext();
+    }
   };
 
   const projectPoster = getPosterFromProject(project);
 
   return (
     <div className="modalBackdrop" onClick={onClose}>
-      <div className="modalContainer" onClick={(e) => e.stopPropagation()}>
+      <div className={`modalContainer ${cursorDirection}`} onClick={(e) => e.stopPropagation()}>
         {hasText && (
           <div className="textContainer">
             {isTextVisible && (
@@ -136,7 +144,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                 e.stopPropagation();
                 setIsTextVisible(!isTextVisible);
               }}
-              underline 
+              underline
             />
           </div>
         )}
@@ -147,10 +155,13 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
           </div>
           <div
             id="mediaContainer"
+            ref={mediaContainerRef}
             className={`mediaContainer ${
               project.media[currentIndex].type === "video" ? "video" : ""
             }`}
             onWheel={handleWheel}
+            onMouseMove={handleMouseMove}
+            onClick={handleClickMedia}
           >
             {project.media[currentIndex].type === "video" ? (
               project.media[currentIndex].src.includes("vimeo.com") ? (
@@ -182,7 +193,12 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             )}
           </div>
 
-          <div className="projectName">{project.name}</div>
+          <div
+  className="projectName"
+  style={{ bottom: project.nameBottom ? project.nameBottom : "1rem" }}
+>
+  {project.name}
+</div>
         </div>
       </div>
     </div>

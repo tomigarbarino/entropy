@@ -35,6 +35,7 @@ export default function Home() {
       name: "Uber",
       mediaNumber: 1,
       forceVisible: forceMediaToVisible,
+
       howWeDidIt:"1n c0llab0rat10n w1th AKQA agency, Uber c0mm1ss10ned us t0 create three real1st1c an1mat1cs f0r test1ng the c0mmerc1al c0ncept w1th the aud1ence. We met1cul0usly crafted these an1mat1cs t0 ensure they effect1vely c0nveyed the 1ntended message and res0nated w1th the target dem0graph1c, pr0v1d1ng valuable 1ns1ghts f0r the f1nal c0mmerc1al pr0duct10n.", 
       roles: ["Gen Cast1ng", "St0ryb0ard", "Styleframes", "M0t10n", "Ed1t + SFX", "Del1very"],
       details: "3 an1mat1cs",
