@@ -160,9 +160,6 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
         )}
 
         <div className="modalContent">
-          <div className="closeButton" onClick={onClose}>
-            x
-          </div>
 
           <div
             id="mediaContainer"
@@ -209,6 +206,9 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             style={{ bottom: project.nameBottom ? project.nameBottom : "1rem" }}
           >
             {project.name}
+          </div>
+          <div className="closeButton" onClick={onClose}>
+            x
           </div>
         </div>
       </div>

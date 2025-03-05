@@ -187,8 +187,8 @@
 
 .closeButton {
   position: absolute;
-  top:3rem;
-  right: -4rem;
+  top: clamp(6rem, 9vw, 8rem);  
+  right: clamp(8rem, 13.6vw, 12rem);
   font-size: 3rem;
   cursor: pointer;
   border: none;
@@ -256,14 +256,13 @@
  .mediaContainer {
     width: 55rem;
     height: 35rem;
-    top: 4rem;
+    top: 8.5rem;
     left: 3rem;
   }
 
   .mediaContainer.video {
     position: absolute; 
     top: 47%;
-; 
     left:  8%;
     transform: translateY(-50%);
     width: 83vw;
@@ -301,7 +300,7 @@
 
 @media screen and (min-width: 1281px) and (max-width: 1440px) {
   .media {
-    width: 100%;
+    width: 90%;
     height: 100%;
     object-fit: cover;
   }
@@ -370,8 +369,7 @@ font-weight: normal !important;
   }
 
   .mediaContainer {
-  
-    top: 10rem;
+    top: 3rem;
     left: 3.5rem;
    
   }
@@ -392,6 +390,10 @@ font-weight: normal !important;
     bottom: 2rem;
     right: -3rem;
   }
+  .closeButton {
+    right: -6rem;
+    top: 2.5rem;
+  }
 
 
   
@@ -406,7 +408,10 @@ font-weight: normal !important;
     bottom: 2rem;
     right: 0rem;
   }
-
+  .closeButton {
+    right: -6rem;
+    top: 3rem;
+  }
   
   
 }

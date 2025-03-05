@@ -33,7 +33,8 @@ const HomeMediaGrid = ({ projects, onProjectClick }) => {
           <span className="client">{project.name}</span>
         </div>
       ))}
-      <Button text="BACK T0 T0P" onClick={scrollToTop} />
+      <Button text="BACK T0 T0P" onClick={scrollToTop} fontSize="16px" />
+
     </div>
   );
 };

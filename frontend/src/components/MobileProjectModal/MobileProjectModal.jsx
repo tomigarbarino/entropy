@@ -153,8 +153,8 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
               ))}
             </div>
           )}
-        </div>
-        <Button text="BACK TO HOME" onClick={onClose} />
+        </div> 
+        <Button text="BACK T0 H0ME" onClick={onClose}  fontSize={"16px"}/>
       </div>
 
       {isMediaModalOpen && selectedIndex !== null && (
