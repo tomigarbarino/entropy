@@ -81,4 +81,26 @@
       width: 100%;
       aspect-ratio: 16/9;
     }
+
+    .textContainer  .projectSection h3 {
+  font-size: 14px !important; 
+  margin-bottom: 0.5rem;
+
+}
+
+.textContainer  .projectSection p {
+  font-size: 14px !important; 
+}
+
+@media screen and (max-width: 320px) {
+  .textContainer  .projectSection h3 {
+    font-size: 12px !important; 
+
+  }
+  
+  .textContainer  .projectSection p {
+    font-size: 12px !important; 
+  }
+}
+
 }

@@ -17,8 +17,8 @@ const MediaModal = ({
   const [touchStartY, setTouchStartY] = useState(null);
   const [touchEndY, setTouchEndY] = useState(null);
   const swipeThreshold = 50;
-
   const [dimensions, setDimensions] = useState({ width: null, height: null });
+  const [transitionClass, setTransitionClass] = useState("slide-in");
   const mediaRef = useRef(null);
 
   useEffect(() => {
@@ -32,6 +32,15 @@ const MediaModal = ({
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
   }, [onClose]);
+
+  // Efecto para disparar la transición al cambiar el video
+  useEffect(() => {
+    setTransitionClass("slide-out");
+    const timer = setTimeout(() => {
+      setTransitionClass("slide-in");
+    }, 500); // Duración de la animación: 500ms
+    return () => clearTimeout(timer);
+  }, [media.src]);
 
   const handleTouchStart = (e) => {
     setTouchStartY(e.targetTouches[0].clientY);
@@ -81,7 +90,7 @@ const MediaModal = ({
       onTouchEnd={handleBackdropTouchEnd}
     >
       <div
-        className="mediaModalContainer"
+        className={`mediaModalContainer ${transitionClass}`}
         onClick={(e) => e.stopPropagation()}
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}

@@ -120,6 +120,7 @@
     
         .social {
           align-items: flex-end;
+          padding-right: 1rem;
           
           p {
             display: inline-block;
@@ -132,6 +133,10 @@
           font-size: 14px;
           white-space: nowrap;
         }
+
+        .social p {
+          margin: 0px 0px; 
+       }
       }
 
       @media screen and (max-width: 425px) {
@@ -144,6 +149,9 @@
        .social{
         padding-right: 0.5rem;
        }
+       .social p {
+        margin: 1px 0pc;
+       }
       }
 
       @media  screen and (max-width: 365px) {
@@ -151,6 +159,9 @@
           font-size: 12px;
           margin: 6px 0;
         }
+
+        .social p{
+          margin: 1px 0px;}
         
       }
 

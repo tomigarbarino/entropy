@@ -1,5 +1,5 @@
 "use client";
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./MobileProjectModal.scss";
 import VimeoEmbed from "../VimeoEmbed/VimeoEmbed";
 import Button from "../Button/Button";
@@ -33,6 +33,18 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
     setSelectedIndex(index);
     setMediaModalOpen(true);
   };
+
+  useEffect(() => {
+    if (isOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "auto";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [isOpen]);
 
   if (!isOpen || !project) return null;
   const mediaArray = project.media || [];
@@ -142,7 +154,7 @@ const MobileProjectModal = ({ isOpen, onClose, project, showTexts = true, scroll
             </div>
           )}
         </div>
-        <Button text="Back to Home" onClick={onClose} underline />
+        <Button text="BACK TO HOME" onClick={onClose} />
       </div>
 
       {isMediaModalOpen && selectedIndex !== null && (
