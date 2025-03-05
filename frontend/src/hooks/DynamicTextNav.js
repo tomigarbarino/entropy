@@ -1,7 +1,7 @@
 import React, { useEffect, useRef } from "react";
 
 function isOverlapping(r1, r2) {
-  const offset = 11; 
+  const offset = 0; 
   return !(
     (r1.right - offset) < r2.left ||
     r1.left > r2.right ||
@@ -15,7 +15,11 @@ const DynamicText = ({ text }) => {
   const animationRef = useRef(null);
 
   const updateTextColors = () => {
-    const mediaElements = document.querySelectorAll(".homeMediaGrid img, .homeMediaGrid video");
+    const mediaElements = document.querySelectorAll(
+      ".homeMediaGrid img, .homeMediaGrid video, .mobileModalContent img, .mobileModalContent video, .mainMedia img, .mainMedia video, .mainMedia iframe"
+    );
+    
+    
     if (!textRef.current || mediaElements.length === 0) return;
 
     const letterSpans = textRef.current.querySelectorAll(".letterSpan");

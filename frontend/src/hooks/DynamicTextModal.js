@@ -18,9 +18,22 @@ const DynamicTextModal = ({ text, mediaContainerId = "mediaContainer" }) => {
     const mediaElement = document.getElementById(mediaContainerId);
     if (!mediaElement || !textRef.current) return;
 
-    const mediaRect = mediaElement.getBoundingClientRect();
     const letterSpans = textRef.current.querySelectorAll(".letterSpan");
+    const transitionClasses = ["fade-out-up", "fade-in-up", "fade-out-down", "fade-in-down"];
+    if (transitionClasses.some(cls => mediaElement.classList.contains(cls))) {
+      letterSpans.forEach((span) => {
+        span.classList.remove("highlight");
+        span.style.color = "black";
+      });
+      return;
+    } else {
 
+      letterSpans.forEach((span) => {
+        span.style.color = "";
+      });
+    }
+
+    const mediaRect = mediaElement.getBoundingClientRect();
     letterSpans.forEach((span) => {
       const spanRect = span.getBoundingClientRect();
       if (isOverlapping(spanRect, mediaRect)) {
@@ -47,7 +60,9 @@ const DynamicTextModal = ({ text, mediaContainerId = "mediaContainer" }) => {
     animationRef.current = requestAnimationFrame(animate);
 
     return () => {
-      if (animationRef.current) cancelAnimationFrame(animationRef.current);
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
     };
   }, [text, mediaContainerId]);
 

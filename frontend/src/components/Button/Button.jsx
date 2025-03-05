@@ -1,10 +1,13 @@
 import React from 'react';
 import './button.scss';
 
-const Button = ({ text, onClick }) => {
+const Button = ({ text, onClick, underline = false }) => {
   return (
-    <button className="back-button" onClick={onClick}>
-      <strong>{text}</strong>
+    <button
+      className={`back-button ${underline ? "underline" : ""}`}
+      onClick={onClick}
+    >
+      {text}
     </button>
   );
 };

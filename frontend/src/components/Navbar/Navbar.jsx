@@ -29,8 +29,8 @@ const Navbar = ({showNav}) => {
           <DynamicText text="contact@entropypro.nyc" />
         </div>
         <div className="social">
-        <p>1NSTAGRAM</p>
-        <p>@entropy.ai</p>
+        <DynamicText text="1NSTAGRAM" />
+        <DynamicText text="@entropy.ai" />
         </div>
       </div>
     </nav>

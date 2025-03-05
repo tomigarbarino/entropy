@@ -16,7 +16,6 @@ const getPosterFromProject = (project) => {
   return project.mediaSrc || null;
 };
 
-
 const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
   if (!isOpen || !project) return null;
 
@@ -104,20 +103,20 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             {isTextVisible && (
               <>
                 {project.howWeDidIt && (
-  <div className="projectSection">
-    <h3>H0W WE D1D 1T</h3>
-    {Array.isArray(project.howWeDidIt) ? (
-      project.howWeDidIt.map((para, index) => (
-        <DynamicText key={index} text={para} />
-      ))
-    ) : (
-      <DynamicText text={project.howWeDidIt} />
-    )}
-  </div>
-)}
+                  <div className="projectSection">
+                    <h3 className="howWeDidItHeader">H0W WE D1D 1T</h3>
+                    {Array.isArray(project.howWeDidIt) ? (
+                      project.howWeDidIt.map((para, index) => (
+                        <DynamicText key={index} text={para} />
+                      ))
+                    ) : (
+                      <DynamicText text={project.howWeDidIt} />
+                    )}
+                  </div>
+                )}
                 {project.roles && project.roles.length > 0 && (
                   <div className="projectSection">
-                    <h3>R0LES</h3>
+                    <h3 className="rolesHeader">R0LES</h3>
                     {project.roles.map((role, index) => (
                       <p key={index}>{role}</p>
                     ))}
@@ -125,7 +124,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                 )}
                 {project.details && (
                   <div className="projectSection">
-                    <h3>DETA1LS</h3>
+                    <h3 className="detailsHeader">DETA1LS</h3>
                     <p>{project.details}</p>
                   </div>
                 )}
@@ -137,6 +136,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                 e.stopPropagation();
                 setIsTextVisible(!isTextVisible);
               }}
+              underline 
             />
           </div>
         )}
@@ -146,7 +146,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             &times;
           </div>
           <div
-          id="mediaContainer"
+            id="mediaContainer"
             className={`mediaContainer ${
               project.media[currentIndex].type === "video" ? "video" : ""
             }`}
