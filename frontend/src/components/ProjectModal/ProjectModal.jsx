@@ -130,7 +130,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                 )}
                 {project.roles && project.roles.length > 0 && (
                   <div className="projectSection">
-                    <h3 className="rolesHeader">R0LES</h3>
+                   <DynamicText text="R0LES" className="rolesHeader" />
                     {project.roles.map((role, index) => (
                       <DynamicText
                         key={index}
@@ -142,8 +142,8 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                 )}
                 {project.details && (
                   <div className="projectSection">
-                    <h3 className="detailsHeader">DETA1LS</h3>
-                    <p>{project.details}</p>
+                    <DynamicText text="DETA1LS" className="detailsHeader" />
+                    <DynamicText text={project.details} />
                   </div>
                 )}
               </>
@@ -158,9 +158,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             />
           </div>
         )}
-
         <div className="modalContent">
-
           <div
             id="mediaContainer"
             ref={mediaContainerRef}
@@ -171,6 +169,10 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             onMouseMove={handleMouseMove}
             onClick={handleClickMedia}
           >
+                      <div className="closeButton" onClick={onClose}>
+            x
+          </div>
+          <div className="projectName">{project.name}</div>
             {project.media[currentIndex].type === "video" ? (
               project.media[currentIndex].src.includes("vimeo.com") ? (
                 <div className={`videoWrapper ${animClass}`}>
@@ -199,14 +201,6 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
                 className={`media ${animClass}`}
               />
             )}
-          </div>
-          <div
-      className="projectName"
-    >
-            {project.name}
-          </div>
-          <div className="closeButton" onClick={onClose}>
-            x
           </div>
         </div>
       </div>
