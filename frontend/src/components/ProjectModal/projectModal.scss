@@ -238,8 +238,12 @@
   }
   
   .modalContainer .closeButton {
-    top: 0.5rem;
-    right: 0.5rem;
+    top: 8%;
+  }
+  
+  .textContainer {
+    right: 61%;
+    top: 61%;
   }
 }
 
@@ -342,6 +346,11 @@
   .projectName {
     bottom: 5rem;
   }
+
+  .modalContainer .closeButton {
+    top: 2%;
+  }
+  
   
 }
 
