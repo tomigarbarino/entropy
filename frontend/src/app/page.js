@@ -133,9 +133,9 @@ export default function Home() {
       forceVisible: forceMediaToVisible,
       mediaSrc: "/images/tmr_home.png",
       media: [
-        { src: "https://player.vimeo.com/video/1060869903?h=90473d634e&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
         { src: "https://player.vimeo.com/video/1060869752?h=f4e2a0ce28&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
         { src: "https://player.vimeo.com/video/1060869683?h=3457d55375&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
+        { src: "https://player.vimeo.com/video/1060869903?h=90473d634e&badge=0&autopause=0&player_id=0&app_id=58479", type: "video" },
         { src: "/images/tmr_home.png", type: "image" },
         { src: "/images/TMR/6dfb99d9-ec96-4613-b922-a0fc68284d28.jpg", type: "image" },
         { src: "/images/TMR/953017bd-37b9-40a8-a51b-cf0df115fd2e.jpg", type: "image" },
