@@ -17,7 +17,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  position: relative; // Para posicionar otros elementos, si se necesitan
+  position: relative;
   background: none;
   box-shadow: none;
   border: none;
@@ -70,19 +70,16 @@
   font-size: 16px;
 }
 
-/* Contenedor de medios unificado mediante aspect-ratio para 16:9 */
 .mediaContainer {
-  position: relative; // Sigue siendo útil para otros elementos que estén dentro
+  position: relative;
   width: 80rem;
   aspect-ratio: 16 / 9;
   overflow: hidden;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin: 0 auto; // Centrado horizontalmente
+  margin: 0 auto;
 }
-
-/* Si se requiere un estilo específico para videos, se mantiene la misma proporción */
 .mediaContainer.video {
   aspect-ratio: 16 / 9;
 }
@@ -111,11 +108,11 @@
   animation: fadeInUpAnimation 0.5s forwards;
 }
 
-/* Las imágenes y videos ocuparán todo el contenedor sin recortarse */
+
 .media {
   width: 100%;
   height: 100%;
-  object-fit: contain;  // Cambiado de cover a contain para que no se recorten
+  object-fit: contain;  
   transition: opacity 0.5s ease, transform 0.5s ease;
   opacity: 1;
   transform: translateY(0);
