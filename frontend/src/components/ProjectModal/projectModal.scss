@@ -10,9 +10,10 @@
 }
 
 .modalContainer {
-  width: 90vw;
+  width: 100%;
   max-width: 1200px;
   height: 90vh;
+  min-height: 90dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -331,6 +332,26 @@
   .projectSection h3.detailsHeader {
     font-weight: normal !important;
   }
+
+  @media screen and (max-height: 800px)  {
+    .mediaContainer.video {
+      width: 56vw;
+      aspect-ratio: 16 / 9;
+      min-width: 450px;
+    }
+    .mediaContainer {
+      width: 56vw;
+      aspect-ratio: 16 / 9;
+      min-width: 450px;
+    }
+
+    .textContainer {
+      right: 59%;
+      width: 51%;
+      top: 60%;
+    }
+    
+  }
 }
 
 @media screen and (min-width: 1441px) and (max-width: 1920px) {
@@ -358,9 +379,27 @@
   .modalContainer .closeButton {
     top: 0%;
   }
-  
+
+  @media screen and (max-height: 800px) and (min-width: 1366px) {
+    .mediaContainer.video {
+      width: 62vw;
+      aspect-ratio: 16 / 9;
+    }
+    .mediaContainer {
+      width: 62vw;
+      aspect-ratio: 16 / 9;
+    }
+
+    .textContainer {
+      right: 59%;
+      width: 51%;
+    }
+
+  }
   
 }
+
+
 
 @media screen and (min-width: 1921px) and (max-width: 2560px) {
   .modalContainer {
@@ -372,4 +411,8 @@
   }
   
 
+
+  
+
 }
+
