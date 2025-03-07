@@ -17,6 +17,11 @@
         line-height: calc-size(23);
     }
 
+     a {
+      text-decoration: none;
+      color: inherit;
+    }
+
     .social--desktop p {
       margin: 0px 0;
     }
