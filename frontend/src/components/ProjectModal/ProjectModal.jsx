@@ -169,9 +169,7 @@ const ProjectModal = ({ isOpen, onClose, project, showTexts = true }) => {
             onMouseMove={handleMouseMove}
             onClick={handleClickMedia}
           >
-                      <div className="closeButton" onClick={onClose}>
-            x
-          </div>
+           <div className="closeButton" onClick={onClose}>x</div>
           <div className="projectName">{project.name}</div>
             {project.media[currentIndex].type === "video" ? (
               project.media[currentIndex].src.includes("vimeo.com") ? (
