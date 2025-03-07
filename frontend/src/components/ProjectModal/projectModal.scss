@@ -411,7 +411,7 @@
 
 
 
-@media screen and (min-width: 1921px) and (max-width: 2560px) {
+@media screen and (min-width: 1921px) and (max-width: 2559px) {
   .modalContainer {
     height: 65vh;
   }
@@ -424,5 +424,15 @@
 
   
 
+}
+
+@media screen and (min-width: 2560px) {
+  .modalContainer .closeButton {
+    top: 14%;
+  }
+  .mediaContainer .projectName{
+    bottom: 16%;
+  }
+  
 }
 
